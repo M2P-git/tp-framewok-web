@@ -1,0 +1,184 @@
+:root {
+  --fond: #f5f6fa;
+  --carte: #ffffff;
+  --texte: #1d1f2b;
+  --discret: #5b5f73;
+  --bord: #d9dbe7;
+  --accent: #2b3a9e;
+  --favori: #d98c00;
+  font-family: system-ui, sans-serif;
+  color: var(--texte);
+  background: var(--fond);
+}
+
+/* Thème sombre (S4) : il suffit de changer les variables */
+:root[data-theme='sombre'] {
+  --fond: #14161f;
+  --carte: #1f2230;
+  --texte: #eceef6;
+  --discret: #a9adc2;
+  --bord: #343849;
+  --accent: #9fb0ff;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.entete {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entete h1 {
+  color: var(--accent);
+  margin: 0;
+}
+
+.entete nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.entete nav a {
+  color: var(--texte);
+  text-decoration: none;
+}
+
+.entete nav a.active {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.recherche {
+  display: flex;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.recherche input {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.resultats,
+.vide {
+  color: var(--discret);
+}
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.carte {
+  background: var(--carte);
+  border: 1px solid var(--bord);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+}
+
+.carte h3 {
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.carte h3 a {
+  color: inherit;
+}
+
+.carte.est-favori {
+  border: 2px solid var(--favori);
+}
+
+.entreprise,
+.details {
+  color: var(--discret);
+  margin: 0 0 0.5rem;
+}
+
+.badge {
+  background: var(--accent);
+  color: var(--carte);
+  border-radius: 4px;
+  padding: 0 0.4rem;
+  font-size: 0.85em;
+}
+
+.competences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  list-style: none;
+  padding: 0;
+}
+
+.competences li {
+  border: 1px solid var(--bord);
+  border-radius: 999px;
+  padding: 0 0.5rem;
+  font-size: 0.8em;
+}
+
+button {
+  cursor: pointer;
+}
+
+button.favori {
+  border: 1px solid var(--favori);
+  background: transparent;
+  color: var(--texte);
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+}
+
+.pagination {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 640px;
+}
+
+.formulaire label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.erreur {
+  color: #c62828;
+  margin: 0;
+}
+
+.message {
+  font-weight: bold;
+}
+
+/* Titre cliquable (S3) : un bouton qui ressemble à un lien */
+button.lien {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  text-decoration: underline;
+}

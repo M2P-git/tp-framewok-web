@@ -1,0 +1,47 @@
+# Les programmes des TP, sans installer Node.js (optionnel).
+#
+#   docker compose up api                        l'API simulée (http://localhost:3001)
+#   docker compose up demo                       la démo MPA, SPA, SSR du TP S1.2 (http://localhost:3002)
+#   docker compose run --rm labo 03-ordre.js 2   un exercice du TP S1.3
+#   docker compose down                          tout arrêter
+#
+# Réglages : LATENCE=1500 PANNE=0.3 ALEATOIRE=1 docker compose up api
+#            JS_DELAI=4000 docker compose up demo
+# Sous PowerShell : $env:PANNE=0.3; docker compose up api
+
+name: tp-frameworks-web
+
+services:
+  api:
+    image: node:22-alpine
+    working_dir: /tp/api-simulee
+    command: ["node", "serveur.mjs"]
+    volumes:
+      - .:/tp:ro
+    ports:
+      - "3001:3001"
+    environment:
+      LATENCE: ${LATENCE:-300}
+      PANNE: ${PANNE:-0}
+      ALEATOIRE: ${ALEATOIRE:-0}
+
+  demo:
+    image: node:22-alpine
+    working_dir: /tp/s1-2-architectures
+    command: ["node", "serveur.mjs"]
+    volumes:
+      - .:/tp:ro
+    ports:
+      - "3002:3002"
+    environment:
+      JS_DELAI: ${JS_DELAI:-1500}
+      LATENCE: ${LATENCE_DEMO:-400}
+
+  labo:
+    image: node:22-alpine
+    working_dir: /tp/s1-3-debogage
+    entrypoint: ["node"]
+    command: ["03-ordre.js", "1"]
+    volumes:
+      - .:/tp:ro
+    profiles: ["outils"]

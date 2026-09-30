@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BUG.5 : trop tôt</title>
+    <style>
+      body { font: 16px/1.5 system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 16px; }
+      .consigne { background: #fbeede; border-radius: 8px; padding: 8px 14px; }
+    </style>
+  </head>
+  <body>
+    <h1>BUG.5 : la valeur n'est pas encore là</h1>
+    <p id="compte">…</p>
+    <ul id="liste"></ul>
+
+    <div class="consigne">
+      <p><strong>Consignes (10 minutes)</strong></p>
+      <ol>
+        <li>Ouvrez la console (F12). Quelle erreur apparaît ? À quelle ligne ?</li>
+        <li><code>offres</code> reçoit pourtant les données dans le <code>then</code>. Dans quel ordre
+          s'exécutent la ligne du <code>then</code> et la ligne qui affiche le compte ?
+          Ajoutez deux <code>console.log</code> pour le vérifier.</li>
+        <li>Remplacez <code>let offres;</code> par <code>let offres = [];</code>. L'erreur disparaît :
+          le programme est-il correct pour autant ? Qu'affiche la page ?</li>
+        <li>Corrigez vraiment : écrivez une fonction <code>async function demarrer()</code> qui attend
+          les offres avec <code>await</code>, puis les affiche.</li>
+        <li>En React (S3) : pourquoi écrit-on <code>useState([])</code> plutôt que <code>useState()</code>
+          pour une liste chargée depuis l'API ?</li>
+      </ol>
+    </div>
+
+    <script>
+      // Imite fetch : les offres arrivent au bout de 800 ms.
+      function chargerOffres() {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve([
+            { id: 'o-0001', title: "PFE : moteur de recherche d'offres immobilières" },
+            { id: 'o-0002', title: 'PFE : espace client pour une assurance' },
+            { id: 'o-0004', title: 'PFE : outil interne de gestion des tickets' },
+          ]), 800);
+        });
+      }
+
+      let offres;
+      chargerOffres().then((donnees) => {
+        offres = donnees;
+      });
+
+      document.querySelector('#compte').textContent = `${offres.length} offres`;
+      document.querySelector('#liste').innerHTML = offres.map((o) => `<li>${o.title}</li>`).join('');
+    </script>
+  </body>
+</html>

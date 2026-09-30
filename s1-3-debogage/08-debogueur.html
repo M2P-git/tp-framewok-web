@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BUG.8 : le débogueur pas à pas</title>
+    <style>
+      body { font: 16px/1.5 system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 16px; }
+      label { display: block; margin: 6px 0; }
+      input { font: inherit; width: 8rem; }
+      button { font: inherit; padding: 6px 14px; }
+      .resultat { font-size: 1.3rem; font-weight: 700; }
+      .consigne { background: #fbeede; border-radius: 8px; padding: 8px 14px; }
+    </style>
+  </head>
+  <body>
+    <h1>Simulateur de gratification de stage</h1>
+    <label>Gratification mensuelle (MAD) <input id="mensuel" type="number" value="3000" /></label>
+    <label>Prime de transport mensuelle (MAD) <input id="prime" type="number" value="200" /></label>
+    <label>Durée du stage (mois) <input id="duree" type="number" value="6" /></label>
+    <button id="calculer">Calculer le total</button>
+    <p class="resultat" id="resultat"></p>
+
+    <div class="consigne">
+      <p><strong>BUG.8 : le débogueur pas à pas (15 minutes)</strong></p>
+      <p>Attendu : (3 000 + 200) × 6 = 19 200 MAD. Cliquez sur « Calculer » : le total est absurde.
+        Interdit d'ajouter des <code>console.log</code> : on utilise le débogueur.</p>
+      <ol>
+        <li>F12, onglet <strong>Sources</strong>, ouvrez ce fichier. Cliquez sur le numéro de la ligne
+          <code>const parMois = mensuel + prime;</code> : un point d'arrêt apparaît.</li>
+        <li>Cliquez sur « Calculer ». Le programme s'arrête. Dans le panneau <strong>Call Stack</strong>,
+          quelles fonctions voyez-vous ? Laquelle a appelé <code>calculerTotal</code> ?</li>
+        <li>Dans le panneau <strong>Scope</strong>, que valent <code>mensuel</code>, <code>prime</code> et
+          <code>duree</code> ? Regardez bien les guillemets.</li>
+        <li>Avancez d'une ligne (F10). Que vaut <code>parMois</code> ? Expliquez le résultat affiché.</li>
+        <li>Corrigez (indice : <code>Number(...)</code> ou <code>champ.valueAsNumber</code>).
+          En TypeScript, quelle annotation aurait signalé l'erreur avant l'exécution ?</li>
+      </ol>
+    </div>
+
+    <script>
+      function calculerTotal(mensuel, prime, duree) {
+        const parMois = mensuel + prime;
+        return parMois * duree;
+      }
+
+      document.querySelector('#calculer').addEventListener('click', () => {
+        const mensuel = document.querySelector('#mensuel').value;
+        const prime = document.querySelector('#prime').value;
+        const duree = document.querySelector('#duree').value;
+        const total = calculerTotal(mensuel, prime, duree);
+        document.querySelector('#resultat').textContent = `Total : ${total.toLocaleString('fr-FR')} MAD`;
+      });
+    </script>
+  </body>
+</html>

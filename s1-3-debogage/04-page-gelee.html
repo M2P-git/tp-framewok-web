@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BUG.4 : la page gelée</title>
+    <style>
+      body { font: 16px/1.5 system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 16px; }
+      .horloge { font: 700 2rem ui-monospace, monospace; }
+      .statut { font-size: 1.3rem; font-weight: 700; color: #b85a00; min-height: 2rem; }
+      button { font: inherit; padding: 6px 14px; margin: 4px 4px 4px 0; }
+      .consigne { background: #fbeede; border-radius: 8px; padding: 8px 14px; }
+    </style>
+  </head>
+  <body>
+    <h1>BUG.4 : la page gelée</h1>
+    <p>Horloge mise à jour par JavaScript toutes les 50 ms : <span class="horloge" id="horloge">0.00</span> s</p>
+    <p class="statut" id="statut">Prêt</p>
+    <p>
+      <button id="bloquant">Calcul bloquant (3 s)</button>
+      <button id="decoupe">Calcul découpé (3 s)</button>
+    </p>
+    <p><button id="compteur">Cliquez-moi pendant le calcul : 0</button></p>
+
+    <div class="consigne">
+      <p><strong>Consignes (15 minutes)</strong></p>
+      <ol>
+        <li>Cliquez sur « Calcul bloquant ». Pendant le calcul, cliquez trois fois sur « Cliquez-moi ».
+          Que fait l'horloge ? Le texte « Calcul… » s'affiche-t-il ? Vos clics sont-ils perdus ?</li>
+        <li>Lisez le code de <code>calculBloquant</code> : la ligne <code>statut.textContent = 'Calcul…'</code>
+          s'exécute bien. Pourquoi ne la voit-on jamais ?</li>
+        <li>Recommencez avec « Calcul découpé ». Qu'est-ce qui change ? Pourquoi ?</li>
+        <li>Outils : F12, onglet <strong>Performance</strong>, bouton d'enregistrement, cliquez sur
+          « Calcul bloquant », arrêtez l'enregistrement. Repérez dans la piste <em>Main</em> la tâche
+          marquée d'un triangle rouge (<em>Long task</em>). Combien de temps dure-t-elle ?</li>
+      </ol>
+    </div>
+
+    <script>
+      const horloge = document.querySelector('#horloge');
+      const statut = document.querySelector('#statut');
+      const compteur = document.querySelector('#compteur');
+      const debut = performance.now();
+      let clics = 0;
+
+      // L'horloge : une petite tâche toutes les 50 ms (file des tâches)
+      setInterval(() => {
+        horloge.textContent = ((performance.now() - debut) / 1000).toFixed(2);
+      }, 50);
+
+      compteur.addEventListener('click', () => {
+        clics += 1;
+        compteur.textContent = `Cliquez-moi pendant le calcul : ${clics}`;
+      });
+
+      // Un « calcul » qui occupe la pile pendant `duree` millisecondes
+      function travailler(duree) {
+        const fin = performance.now() + duree;
+        let n = 0;
+        while (performance.now() < fin) n += Math.sqrt(n + 1);
+        return n;
+      }
+
+      function calculBloquant() {
+        statut.textContent = 'Calcul…';
+        travailler(3000);               // 3 secondes d'un seul bloc
+        statut.textContent = 'Terminé';
+      }
+
+      async function calculDecoupe() {
+        statut.textContent = 'Calcul…';
+        for (let morceau = 1; morceau <= 60; morceau += 1) {
+          travailler(50);               // 50 ms de travail...
+          statut.textContent = `Calcul… ${Math.round((morceau / 60) * 100)} %`;
+          // ...puis on rend la main : une nouvelle tâche reprendra la suite
+          await new Promise((resolve) => setTimeout(resolve, 0));
+        }
+        statut.textContent = 'Terminé';
+      }
+
+      document.querySelector('#bloquant').addEventListener('click', calculBloquant);
+      document.querySelector('#decoupe').addEventListener('click', calculDecoupe);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+// 24 offres extraites du jeu de données BabStage (donnees/db.json).
+// Ce fichier crée une variable globale OFFRES, lue par app.js.
+const OFFRES = [
+  {"id": "o-0001", "title": "PFE : moteur de recherche d'offres immobilières", "companyName": "Zitoun Numérique", "city": "Casablanca", "workMode": "onsite", "skills": ["React", "Elasticsearch", "Node.js", "AWS"]},
+  {"id": "o-0002", "title": "PFE : espace client pour une assurance", "companyName": "Oasis Systèmes", "city": "Casablanca", "workMode": "hybrid", "skills": ["Angular", "Spring Boot", "PostgreSQL", "Azure", "Vitest"]},
+  {"id": "o-0003", "title": "PFE : plateforme de formation en ligne", "companyName": "Sahel Solutions", "city": "Casablanca", "workMode": "onsite", "skills": ["React", "Django", "PostgreSQL", "Git"]},
+  {"id": "o-0004", "title": "PFE : outil interne de gestion des tickets", "companyName": "Argan Conseil", "city": "Rabat", "workMode": "remote", "skills": ["Vue.js", "Laravel", "MySQL", "Jest", "Docker"]},
+  {"id": "o-0006", "title": "PFE : plateforme de réservation en ligne", "companyName": "Moulouya Systèmes", "city": "Casablanca", "workMode": "hybrid", "skills": ["React", "TypeScript", "Express", "AWS"]},
+  {"id": "o-0008", "title": "PFE : plateforme de formation en ligne", "companyName": "Oasis Digital", "city": "Casablanca", "workMode": "onsite", "skills": ["React", "Django", "PostgreSQL", "Tailwind CSS", "Jest"]},
+  {"id": "o-0009", "title": "PFE : application de gestion des rendez-vous", "companyName": "Argan Conseil", "city": "Rabat", "workMode": "hybrid", "skills": ["Angular", "NestJS", "MongoDB", "AWS", "Docker"]},
+  {"id": "o-0010", "title": "PFE : tableau de bord de consommation d'énergie", "companyName": "Oasis Digital", "city": "Casablanca", "workMode": "hybrid", "skills": ["Vue.js", "Python", "InfluxDB", "Vitest", "Azure"]},
+  {"id": "o-0011", "title": "PFE : moteur de recherche d'offres immobilières", "companyName": "Yasmine Conseil", "city": "Salé", "workMode": "hybrid", "skills": ["React", "Elasticsearch", "Node.js", "Docker"]},
+  {"id": "o-0013", "title": "PFE : migration d'une application Angular vers React", "companyName": "Yasmine Conseil", "city": "Salé", "workMode": "onsite", "skills": ["Angular", "React", "TypeScript", "Azure"]},
+  {"id": "o-0014", "title": "PFE : tableau de bord de pilotage des ventes", "companyName": "Souss Labs", "city": "Rabat", "workMode": "hybrid", "skills": ["React", "TypeScript", "Power BI", "Vitest"]},
+  {"id": "o-0015", "title": "PFE : application web de suivi de flotte", "companyName": "Ourika Conseil", "city": "Rabat", "workMode": "hybrid", "skills": ["React", "Node.js", "MongoDB", "Docker", "Anglais"]},
+  {"id": "o-0017", "title": "PFE : site e-commerce multilingue", "companyName": "Chellah Systèmes", "city": "Fès", "workMode": "hybrid", "skills": ["Next.js", "TypeScript", "Tailwind CSS", "Redux", "Jest"]},
+  {"id": "o-0018", "title": "PFE : API de paiement mobile", "companyName": "Ifrane Data", "city": "Rabat", "workMode": "hybrid", "skills": ["Node.js", "Express", "PostgreSQL", "Anglais", "Vitest"]},
+  {"id": "o-0019", "title": "PFE : API de paiement mobile", "companyName": "Sahel Cloud", "city": "Casablanca", "workMode": "onsite", "skills": ["Node.js", "Express", "PostgreSQL", "CI/CD"]},
+  {"id": "o-0020", "title": "PFE : application web de suivi de flotte", "companyName": "Tafilalet Digital", "city": "Rabat", "workMode": "onsite", "skills": ["React", "Node.js", "MongoDB", "CI/CD", "Tailwind CSS"]},
+  {"id": "o-0025", "title": "PFE : application mobile de fidélité", "companyName": "Sahel Labs", "city": "Tanger", "workMode": "onsite", "skills": ["React Native", "Node.js", "MongoDB", "Azure"]},
+  {"id": "o-0026", "title": "PFE : moteur de recherche d'offres immobilières", "companyName": "Draa Logiciels", "city": "Tanger", "workMode": "onsite", "skills": ["React", "Elasticsearch", "Node.js", "Anglais", "GraphQL"]},
+  {"id": "o-0033", "title": "PFE : moteur de recherche d'offres immobilières", "companyName": "Chellah Labs", "city": "Rabat", "workMode": "onsite", "skills": ["React", "Elasticsearch", "Node.js", "CI/CD"]},
+  {"id": "o-0037", "title": "PFE : application de télémédecine", "companyName": "Draa Logiciels", "city": "Tanger", "workMode": "hybrid", "skills": ["React", "NestJS", "PostgreSQL", "Anglais", "Jest"]},
+  {"id": "o-0040", "title": "PFE : application web de suivi de flotte", "companyName": "Sahel Labs", "city": "Tanger", "workMode": "onsite", "skills": ["React", "Node.js", "MongoDB", "GraphQL", "Vitest"]},
+  {"id": "o-0048", "title": "PFE : application mobile de fidélité", "companyName": "Yasmine Digital", "city": "Fès", "workMode": "onsite", "skills": ["React Native", "Node.js", "MongoDB", "Anglais", "AWS"]},
+  {"id": "o-0070", "title": "PFE : assistant conversationnel pour le service client", "companyName": "Chellah Systèmes", "city": "Fès", "workMode": "hybrid", "skills": ["Python", "React", "LLM", "Git", "AWS"]},
+  {"id": "o-0092", "title": "PFE : tableau de bord de consommation d'énergie", "companyName": "Yasmine Conseil", "city": "Salé", "workMode": "onsite", "skills": ["Vue.js", "Python", "InfluxDB", "Tailwind CSS"]},
+];
