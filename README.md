@@ -15,7 +15,9 @@ rouge au module.
 | avant S2 | Installer son poste de travail | [`00-installation`](00-installation/README.md) | |
 | S1 | La douleur du JavaScript pur (exercice 1.2) | [`s1-1-javascript-pur`](s1-1-javascript-pur/README.md) | un navigateur |
 | S1 | La même page en MPA, en SPA et en SSR (exercice AR.1) | [`s1-2-architectures`](s1-2-architectures/README.md) | Node.js ou Docker |
-| S1 | Déboguer grâce au modèle d'exécution (BUG.1 à BUG.8) | [`s1-3-debogage`](s1-3-debogage/README.md) | un navigateur, Node.js ou Docker |
+| S1 | Déboguer grâce au modèle d'exécution (BUG.1 à BUG.9) | [`s1-3-debogage`](s1-3-debogage/README.md) | un navigateur, Node.js ou Docker |
+| S1 | Du comment au quoi : impératif et déclaratif (exercice ID.1) | [`s1-4-imperatif-declaratif`](s1-4-imperatif-declaratif/README.md) | Node.js |
+| S1 bis | Révision générale de JavaScript et de TypeScript (BS, TS, AS, RE, EN) | [`s1b-javascript-typescript`](s1b-javascript-typescript/README.md) | Node.js (TypeScript : `npm install`) |
 | S2 | La page des offres en composants React | [`s2-composants`](s2-composants/README.md) | Node.js |
 | S3 | Brancher BabStage sur l'API, le formulaire de candidature | [`s3-donnees-formulaires`](s3-donnees-formulaires/README.md) | Node.js, l'API simulée |
 | S4 | Routes, état partagé, tests et intégration continue | [`s4-routage-etat`](s4-routage-etat/README.md) | Node.js, l'API simulée |
@@ -54,6 +56,8 @@ Il faut Docker Desktop (Windows, macOS) ou Docker Engine avec Compose (Linux).
 docker compose up api        # l'API simulée : http://localhost:3001
 docker compose up demo       # la démo MPA, SPA, SSR du TP S1.2 : http://localhost:3002
 docker compose run --rm labo 03-ordre.js 2    # un exercice du TP S1.3
+docker compose run --rm exercices            # tous les tests JavaScript du TP S1 bis
+docker compose run --rm exercices run test:bases   # une série (bases, async, react, entretien)
 docker compose down          # tout arrêter
 ```
 

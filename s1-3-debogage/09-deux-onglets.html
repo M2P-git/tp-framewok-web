@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BUG.9 : deux onglets, deux boucles ?</title>
+    <style>
+      body { font: 16px/1.5 system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 16px; }
+      .horloge { font: 700 2rem ui-monospace, monospace; }
+      .statut { font-weight: 700; color: #b85a00; min-height: 1.6rem; }
+      button { font: inherit; padding: 6px 14px; margin: 4px 4px 4px 0; }
+      .consigne { background: #fbeede; border-radius: 8px; padding: 8px 14px; }
+      .liee { background: #e4e4f8; border-radius: 8px; padding: 4px 12px; display: none; }
+    </style>
+  </head>
+  <body>
+    <h1>BUG.9 : deux onglets, deux boucles ?</h1>
+    <p>Cette page s'appelle <strong id="role">…</strong>. Horloge, mise à jour toutes les 50 ms : <span class="horloge" id="horloge">0.00</span> s</p>
+    <p class="statut" id="statut">Prêt</p>
+    <p>
+      <button id="bloquer">Calcul bloquant (3 s)</button>
+      <button id="ouvrir">Ouvrir une page liée (window.open)</button>
+    </p>
+    <p class="liee" id="liee">Cette page a été ouverte par une autre page avec <code>window.open</code>.</p>
+
+    <div class="consigne">
+      <p><strong>Consignes (15 minutes)</strong> : <em>prédisez avant chaque expérience.</em></p>
+      <ol>
+        <li><strong>Deux onglets indépendants.</strong> Ouvrez ce fichier dans <strong>deux onglets séparés</strong>
+          (deux fois le même fichier, ou faites glisser le fichier dans un second onglet). Dans l'onglet 1,
+          cliquez sur « Calcul bloquant ». Que fait l'horloge de l'onglet 2 ? Et celle de l'onglet 1 ?</li>
+        <li><strong>Un onglet ouvert par un autre.</strong> Dans l'onglet 1, cliquez sur « Ouvrir une page liée » :
+          un nouvel onglet s'ouvre. Cliquez de nouveau sur « Calcul bloquant » dans l'onglet 1.
+          Que fait l'horloge du nouvel onglet ?</li>
+        <li>Qu'en concluez-vous sur le nombre de <strong>boucles d'événements</strong> ? Dessinez, pour chaque
+          cas, qui partage quoi (la pile, les files, le fil).</li>
+        <li>Pour un vrai calcul lourd, comment éviter de geler la page ? (Indice : le cours cite trois solutions,
+          dont une qui utilise un autre fil.)</li>
+      </ol>
+    </div>
+
+    <script>
+      const horloge = document.querySelector('#horloge');
+      const statut = document.querySelector('#statut');
+      const debut = performance.now();
+
+      // Cette page a-t-elle été ouverte par une autre ? (window.opener n'est pas nul)
+      const liee = window.opener !== null;
+      document.querySelector('#role').textContent = liee ? 'la page liée' : 'la page d\'origine';
+      document.title = liee ? 'BUG.9 : page liée' : 'BUG.9 : page d\'origine';
+      if (liee) document.querySelector('#liee').style.display = 'block';
+
+      setInterval(() => {
+        horloge.textContent = ((performance.now() - debut) / 1000).toFixed(2);
+      }, 50);
+
+      document.querySelector('#bloquer').addEventListener('click', () => {
+        statut.textContent = 'Calcul…';
+        const fin = performance.now() + 3000;
+        while (performance.now() < fin) { /* on occupe la pile pendant 3 secondes */ }
+        statut.textContent = 'Terminé';
+      });
+
+      document.querySelector('#ouvrir').addEventListener('click', () => {
+        window.open(location.href, '_blank');
+      });
+    </script>
+  </body>
+</html>

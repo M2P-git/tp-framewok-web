@@ -3,6 +3,7 @@
 #   docker compose up api                        l'API simulée (http://localhost:3001)
 #   docker compose up demo                       la démo MPA, SPA, SSR du TP S1.2 (http://localhost:3002)
 #   docker compose run --rm labo 03-ordre.js 2   un exercice du TP S1.3
+#   docker compose run --rm exercices            les tests JavaScript du TP S1 bis (ou : ... exercices npm run test:bases)
 #   docker compose down                          tout arrêter
 #
 # Réglages : LATENCE=1500 PANNE=0.3 ALEATOIRE=1 docker compose up api
@@ -42,6 +43,15 @@ services:
     working_dir: /tp/s1-3-debogage
     entrypoint: ["node"]
     command: ["03-ordre.js", "1"]
+    volumes:
+      - .:/tp:ro
+    profiles: ["outils"]
+
+  exercices:
+    image: node:22-alpine
+    working_dir: /tp/s1b-javascript-typescript
+    entrypoint: ["npm"]
+    command: ["test"]
     volumes:
       - .:/tp:ro
     profiles: ["outils"]

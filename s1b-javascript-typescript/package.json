@@ -1,0 +1,19 @@
+{
+  "name": "s1b-javascript-typescript",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Exercices de la séance 1 bis : révision générale de JavaScript et de TypeScript",
+  "scripts": {
+    "test": "node --test \"bases/*.test.js\" \"async/*.test.js\" \"react/*.test.js\" \"entretien/*.test.js\"",
+    "test:bases": "node --test \"bases/*.test.js\"",
+    "test:async": "node --test \"async/*.test.js\"",
+    "test:react": "node --test \"react/*.test.js\"",
+    "ts": "node verifier-ts.mjs",
+    "ts:tout": "node verifier-ts.mjs tout",
+    "test:entretien": "node --test \"entretien/*.test.js\""
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0"
+  }
+}

@@ -1,6 +1,6 @@
 # TP S1.3 : déboguer grâce au modèle d'exécution
 
-Huit bugs courts, un fichier chacun. Pour chacun, il faut **expliquer** le bug avec le modèle
+Neuf bugs courts, un fichier chacun. Pour chacun, il faut **expliquer** le bug avec le modèle
 d'exécution de JavaScript vu en cours (la pile d'appels, le fil unique, la boucle
 d'événements et ses deux files), puis le **corriger**. Les consignes détaillées sont au début
 de chaque fichier.
@@ -15,6 +15,7 @@ de chaque fichier.
 | BUG.6 Le filet troué | `06-try-catch.js` | la pile et la boucle | la console | `node 06-try-catch.js 1` (ou 2) | chez vous |
 | BUG.7 4, 4, 4 | `07-var-let.js` | la boucle et les fermetures | la console | `node 07-var-let.js` | chez vous |
 | BUG.8 Le débogueur pas à pas | `08-debogueur.html` | la pile d'appels | l'onglet Sources | ouvrir dans le navigateur | chez vous |
+| BUG.9 Deux onglets, deux boucles ? | `09-deux-onglets.html` | une boucle par page | l'horloge de chaque onglet | ouvrir **deux fois** dans le navigateur | en séance (démonstration) |
 
 Les fichiers `.js` fonctionnent aussi dans la console du navigateur (F12) : collez le code.
 
