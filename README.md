@@ -1,43 +1,63 @@
-# TP : Frameworks de développement web, mois 1
+# TP : Frameworks de développement web
 
 Module 3, cycle d'ingénieurs 3e année, filière développement (CI3), ISMAGI, 2026-2027.
 Dr Paul Menounga Mbilong.
 
-Ce dépôt contient les **sources des travaux pratiques** du mois 1 et la **description du
-travail à faire** pour chacun. Le cours lui-même (notions, figures, quiz) est distribué en PDF.
-Tous les TP portent sur **BabStage**, la plateforme des stages de fin d'études qui sert de fil
-rouge au module.
+## Ce que vous allez construire
+
+Pendant tout le module, vous construisez **Mawid** (« موعد », le rendez-vous) : une plateforme
+de réservation en ligne pour les petits commerces de service au Maroc (salons de coiffure,
+barbiers, hammams, instituts de beauté, kinés, coachs). Les clients trouvent un établissement,
+choisissent leurs prestations et un créneau libre, et réservent en moins d'une minute ; les
+gérants suivent leur agenda ; chaque établissement a ses couleurs et son logo.
+
+Pourquoi ce projet ? Parce que c'est exactement ce que les clients demandent aux développeurs
+React sur les plateformes de freelance en 2026 : des **applications de réservation**, des
+**tableaux de bord**, de l'**e-commerce**, de l'**intégration d'IA**, des **sites vitrines en
+Next.js**. Vous ne faites pas des exercices pour les oublier : à la fin du module, vous avez dans
+votre portfolio une application **en ligne, testée, documentée**, et une extension construite en
+équipe comme une vraie mission de freelance, du brief du client jusqu'à la livraison.
 
 ## Les TP
 
 | Séance | TP | Dossier | Il faut |
 | --- | --- | --- | --- |
-| avant S2 | Installer son poste de travail | [`00-installation`](00-installation/README.md) | |
+| S1 | Du brief au backlog : la réunion client | [`s1-0-le-brief`](s1-0-le-brief/README.md) | papier, crayon, GitHub |
 | S1 | La douleur du JavaScript pur (exercice 1.2) | [`s1-1-javascript-pur`](s1-1-javascript-pur/README.md) | un navigateur |
-| S1 | La même page en MPA, en SPA et en SSR (exercice AR.1) | [`s1-2-architectures`](s1-2-architectures/README.md) | Node.js ou Docker |
-| S1 | Déboguer grâce au modèle d'exécution (BUG.1 à BUG.9) | [`s1-3-debogage`](s1-3-debogage/README.md) | un navigateur, Node.js ou Docker |
-| S1 | Du comment au quoi : impératif et déclaratif (exercice ID.1) | [`s1-4-imperatif-declaratif`](s1-4-imperatif-declaratif/README.md) | Node.js |
-| S1 bis | Révision générale de JavaScript et de TypeScript (BS, TS, AS, RE, EN) | [`s1b-javascript-typescript`](s1b-javascript-typescript/README.md) | Node.js (TypeScript : `npm install`) |
-| S2 | La page des offres en composants React | [`s2-composants`](s2-composants/README.md) | Node.js |
-| S3 | Brancher BabStage sur l'API, le formulaire de candidature | [`s3-donnees-formulaires`](s3-donnees-formulaires/README.md) | Node.js, l'API simulée |
-| S4 | Routes, état partagé, tests et intégration continue | [`s4-routage-etat`](s4-routage-etat/README.md) | Node.js, l'API simulée |
-| S1 à S4 | Le projet d'équipe et le jalon J1 | [`projet-equipe`](projet-equipe/README.md) | |
+| S1 (à la maison) | La même page en MPA, en SPA et en SSR (exercice AR.1) | [`s1-2-architectures`](s1-2-architectures/README.md) | Node.js ou Docker |
+| S1 (à la maison) | Déboguer grâce au modèle d'exécution (BUG.1 à BUG.9) | [`s1-3-debogage`](s1-3-debogage/README.md) | un navigateur, Node.js ou Docker |
+| S1 (à la maison) | Du comment au quoi : impératif et déclaratif (exercice ID.1) | [`s1-4-imperatif-declaratif`](s1-4-imperatif-declaratif/README.md) | Node.js |
+| avant S2 | Installer son poste de travail | [`00-installation`](00-installation/README.md) | |
+| S1 bis | Le JavaScript dont Mawid a besoin (série P), et la révision des bases | [`s1b-javascript-typescript`](s1b-javascript-typescript/README.md) | Node.js |
+| S2 | La page d'un salon en composants, et un gabarit qui change de marque | [`s2-composants`](s2-composants/README.md) | Node.js |
+| S3 | Brancher Mawid sur l'API : l'annuaire, les créneaux, la réservation | [`s3-donnees-formulaires`](s3-donnees-formulaires/README.md) | Node.js, l'API simulée |
+| S4 | Les routes, l'espace pro, les tests, et la livraison du jalon M1 | [`s4-routage-etat`](s4-routage-etat/README.md) | Node.js, l'API simulée |
+| S1 à S12 | Le projet d'équipe : une mission de freelance | [`projet-equipe`](projet-equipe/README.md) | |
 
-Les TP de S2 à S4 construisent pas à pas **votre** application React `babstage-web`, dans votre
+Les TP de S2 à S4 construisent pas à pas **votre** application React `mawid-web`, dans votre
 propre dépôt GitHub. Ce dépôt-ci ne vous fournit que ce qu'il faut copier (données, types,
 styles, client HTTP) : le reste, c'est votre travail. La correction de chaque TP est publiée
 après la séance.
+
+## Le déroulé du module, en un coup d'œil
+
+| Mois | La question | Le livrable (jalon) |
+| --- | --- | --- |
+| 1 | Comment construire une interface solide avec React ? | **M1** : le MVP de l'interface, sur l'API simulée, en ligne |
+| 2 | Comment construire le serveur et la base, et brancher le tout ? | **M2** : le MVP connecté, avec les comptes et les rôles |
+| 3 | Comment livrer un produit sûr et rapide ? Et que valent Next.js et Angular ? | **M3** : la version livrée, présentée comme à un client |
 
 ## Les outils communs
 
 | Dossier | Contenu |
 | --- | --- |
-| [`api-simulee`](api-simulee/serveur.mjs) | l'API de BabStage, pour les TP de S3 et S4 : `node api-simulee/serveur.mjs`, puis `http://localhost:3001` (aucune dépendance) |
-| [`donnees`](donnees/db.json) | les données fictives : 40 entreprises, 300 offres, 150 étudiants, 1 000 candidatures |
+| [`api-simulee`](api-simulee/serveur.mjs) | l'API de Mawid, pour les TP de S3 et S4 et le projet : `node api-simulee/serveur.mjs`, puis `http://localhost:3001` (aucune dépendance) |
+| [`donnees`](donnees/LISEZMOI.md) | les données fictives : 32 établissements (30 actifs), 216 prestations, 500 clients, près de 8 000 rendez-vous, des avis et des produits |
+| [`modeles`](modeles/README.md) | la boîte à outils du freelance : questions au client, fiche de cadrage, user stories, proposition et jalons, PV de recette, journal IA, README de portfolio, règles pour les assistants IA |
 
 Réglages de l'API, par variables d'environnement : `LATENCE=1500` (réponses lentes), `PANNE=0.3`
-(30 % des requêtes échouent), `ALEATOIRE=1` (réponses dans le désordre). Sous PowerShell :
-`$env:LATENCE=1500; node api-simulee/serveur.mjs`.
+(30 % des requêtes échouent), `ALEATOIRE=1` (réponses dans le désordre), `AUJOURDHUI=2026-10-06`
+(fixer la date du jour). Sous PowerShell : `$env:LATENCE=1500; node api-simulee/serveur.mjs`.
 
 ## Récupérer le dépôt
 
@@ -197,7 +217,7 @@ docker compose up api        # l'API simulée : http://localhost:3001
 docker compose up demo       # la démo MPA, SPA, SSR du TP S1.2 : http://localhost:3002
 docker compose run --rm labo 03-ordre.js 2    # un exercice du TP S1.3
 docker compose run --rm exercices            # tous les tests JavaScript du TP S1 bis
-docker compose run --rm exercices run test:bases   # une série (bases, async, react, entretien)
+docker compose run --rm exercices run test:projet   # une série (projet, bases, async, react, entretien)
 docker compose down          # tout arrêter
 ```
 

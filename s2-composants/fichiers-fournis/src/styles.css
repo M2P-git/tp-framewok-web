@@ -1,24 +1,72 @@
+/* Les styles de Mawid.
+ *
+ * LA RÈGLE : aucune couleur, aucune police, aucun arrondi n'est écrit « en dur » dans un
+ * composant. Tout passe par les variables ci-dessous (les « jetons de design », en anglais
+ * design tokens). Pour habiller l'application aux couleurs d'un autre salon, on change
+ * QUELQUES variables, et rien d'autre.
+ *
+ * Les variables --marque-* viennent du thème de l'établissement (business.theme) : votre
+ * composant les pose sur l'élément racine (checkpoint 5 du TP S2), par exemple
+ *   <div className="app" style={{ '--marque-primaire': theme.primary } as CSSProperties}>
+ */
+
 :root {
-  --fond: #f5f6fa;
-  --carte: #ffffff;
-  --texte: #1d1f2b;
-  --discret: #5b5f73;
-  --bord: #d9dbe7;
-  --accent: #2b3a9e;
-  --favori: #d98c00;
-  font-family: system-ui, sans-serif;
+  /* La marque : remplacée par le thème de chaque établissement */
+  --marque-primaire: #0f766e;
+  --marque-douce: #ccfbf1;
+  --marque-police: system-ui, sans-serif;
+  --marque-arrondi: 0.75rem;
+
+  /* Les neutres : communs à tous les établissements */
+  --fond: #f6f7f9;
+  --surface: #ffffff;
+  --texte: #1c1f26;
+  --texte-discret: #5d6270;
+  --bord: #dde0e6;
+  --succes: #15803d;
+  --attention: #b45309;
+  --erreur: #b91c1c;
+
+  /* Les espacements : une seule échelle, pour un rendu régulier */
+  --espace-1: 0.25rem;
+  --espace-2: 0.5rem;
+  --espace-3: 1rem;
+  --espace-4: 1.5rem;
+  --espace-5: 2.5rem;
+
+  font-family: var(--marque-police);
   color: var(--texte);
   background: var(--fond);
 }
 
-/* Thème sombre (S4) : il suffit de changer les variables */
+/* Thème sombre (S4) : il suffit de changer les neutres */
 :root[data-theme='sombre'] {
-  --fond: #14161f;
-  --carte: #1f2230;
-  --texte: #eceef6;
-  --discret: #a9adc2;
-  --bord: #343849;
-  --accent: #9fb0ff;
+  --fond: #12141a;
+  --surface: #1d2029;
+  --texte: #eceef4;
+  --texte-discret: #a6abbb;
+  --bord: #343846;
+}
+
+/* Les jetons SÉMANTIQUES de la marque : dérivés des couleurs de l'établissement, ils
+ * s'adaptent au thème. Les composants utilisent --marque-texte et --marque-fond pour le
+ * texte et les fonds colorés ; --marque-primaire seulement pour un fond plein sous du blanc.
+ * Ils sont déclarés sur .app et .marque (là où le thème est posé) pour être recalculés avec
+ * les couleurs de chaque établissement. */
+.app,
+.marque {
+  --marque-texte: var(--marque-primaire);
+  --marque-fond: var(--marque-douce);
+}
+
+:root[data-theme='sombre'] .app,
+:root[data-theme='sombre'] .marque {
+  --marque-texte: color-mix(in srgb, var(--marque-primaire) 35%, white);
+  --marque-fond: color-mix(in srgb, var(--marque-primaire) 30%, var(--surface));
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -26,148 +74,369 @@ body {
 }
 
 .app {
+  font-family: var(--marque-police);
   max-width: 1100px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: var(--espace-3);
 }
 
-.entete {
+/* Une zone aux couleurs d'un établissement (ses variables --marque-* y sont posées) */
+.marque {
+  font-family: var(--marque-police);
+}
+
+/* ---------- L'en-tête d'un établissement ---------- */
+
+.entete-salon {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-between;
   align-items: center;
+  gap: var(--espace-3);
+  padding: var(--espace-4);
+  border-radius: var(--marque-arrondi);
+  background: var(--marque-fond);
 }
 
-.entete h1 {
-  color: var(--accent);
+.logo {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--marque-arrondi);
+  background: var(--marque-primaire);
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.entete-salon h1 {
   margin: 0;
+  color: var(--marque-texte);
 }
 
-.entete nav {
-  display: flex;
-  gap: 1rem;
+.entete-salon .accroche,
+.discret {
+  color: var(--texte-discret);
+  margin: var(--espace-1) 0 0;
 }
 
-.entete nav a {
-  color: var(--texte);
-  text-decoration: none;
-}
-
-.entete nav a.active {
-  color: var(--accent);
+.note {
+  margin-left: auto;
   font-weight: bold;
 }
 
-.recherche {
+/* ---------- Les filtres ---------- */
+
+.filtres {
   display: flex;
-  gap: 0.8rem;
-  margin: 1rem 0;
+  flex-wrap: wrap;
+  gap: var(--espace-3);
+  align-items: end;
+  margin: var(--espace-4) 0;
 }
 
-.recherche input {
-  flex: 1;
-  padding: 0.5rem;
+.filtres label {
+  display: grid;
+  gap: var(--espace-1);
+  font-size: 0.9rem;
+  color: var(--texte-discret);
 }
 
-.resultats,
-.vide {
-  color: var(--discret);
+input,
+select,
+textarea {
+  font: inherit;
+  padding: var(--espace-2);
+  border: 1px solid var(--bord);
+  border-radius: calc(var(--marque-arrondi) / 2);
+  background: var(--surface);
+  color: var(--texte);
+}
+
+/* ---------- Les prestations ---------- */
+
+.groupe h2 {
+  font-size: 1.1rem;
+  margin: var(--espace-4) 0 var(--espace-2);
 }
 
 .grille {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--espace-3);
 }
 
 .carte {
-  background: var(--carte);
+  display: grid;
+  gap: var(--espace-2);
+  background: var(--surface);
   border: 1px solid var(--bord);
-  border-radius: 8px;
-  padding: 0.8rem 1rem;
+  border-radius: var(--marque-arrondi);
+  padding: var(--espace-3);
 }
 
 .carte h3 {
   font-size: 1rem;
-  margin: 0 0 0.4rem;
-}
-
-.carte h3 a {
-  color: inherit;
-}
-
-.carte.est-favori {
-  border: 2px solid var(--favori);
-}
-
-.entreprise,
-.details {
-  color: var(--discret);
-  margin: 0 0 0.5rem;
-}
-
-.badge {
-  background: var(--accent);
-  color: var(--carte);
-  border-radius: 4px;
-  padding: 0 0.4rem;
-  font-size: 0.85em;
-}
-
-.competences {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  list-style: none;
-  padding: 0;
-}
-
-.competences li {
-  border: 1px solid var(--bord);
-  border-radius: 999px;
-  padding: 0 0.5rem;
-  font-size: 0.8em;
-}
-
-button {
-  cursor: pointer;
-}
-
-button.favori {
-  border: 1px solid var(--favori);
-  background: transparent;
-  color: var(--texte);
-  border-radius: 4px;
-  padding: 0.2rem 0.6rem;
-}
-
-.pagination {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
-.formulaire {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-width: 640px;
-}
-
-.formulaire label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.erreur {
-  color: #c62828;
   margin: 0;
 }
 
-.message {
+.carte.est-choisie {
+  border: 2px solid var(--marque-texte);
+  background: var(--marque-fond);
+}
+
+.prix {
   font-weight: bold;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0 var(--espace-2);
+  border-radius: 999px;
+  background: var(--marque-fond);
+  color: var(--marque-texte);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* ---------- Les boutons ---------- */
+
+button,
+.bouton {
+  font: inherit;
+  cursor: pointer;
+  padding: var(--espace-2) var(--espace-3);
+  border-radius: calc(var(--marque-arrondi) / 2);
+  border: 1px solid var(--marque-texte);
+  background: var(--surface);
+  color: var(--marque-texte);
+  text-decoration: none;
+}
+
+button.principal,
+.bouton.principal {
+  border-color: var(--marque-primaire);
+  background: var(--marque-primaire);
+  color: white;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--marque-texte);
+  outline-offset: 2px;
+}
+
+/* Un groupe de boutons côte à côte */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espace-2);
+  align-items: center;
+}
+
+.pagination {
+  justify-content: center;
+  margin-top: var(--espace-4);
+}
+
+/* ---------- Le résumé de la sélection (en bas de l'écran) ---------- */
+
+.resume-selection {
+  position: sticky;
+  bottom: var(--espace-3);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--espace-3);
+  margin-top: var(--espace-4);
+  padding: var(--espace-3) var(--espace-4);
+  border-radius: var(--marque-arrondi);
+  background: var(--marque-primaire);
+  color: white;
+}
+
+.resume-selection button {
+  border-color: white;
+  background: white;
+  color: var(--marque-primaire);
+}
+
+/* ---------- Les états : chargement, vide, erreur (S3) ---------- */
+
+.etat {
+  padding: var(--espace-4);
+  text-align: center;
+  color: var(--texte-discret);
+  border: 1px dashed var(--bord);
+  border-radius: var(--marque-arrondi);
+}
+
+.etat.erreur {
+  color: var(--erreur);
+  border-color: var(--erreur);
+}
+
+/* ---------- Les créneaux (S3) ---------- */
+
+.creneaux {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  gap: var(--espace-2);
+}
+
+.creneaux button[aria-pressed='true'] {
+  border-color: var(--marque-primaire);
+  background: var(--marque-primaire);
+  color: white;
+}
+
+/* ---------- Le formulaire (S3) ---------- */
+
+.formulaire {
+  display: grid;
+  gap: var(--espace-3);
+  max-width: 32rem;
+}
+
+.formulaire label {
+  display: grid;
+  gap: var(--espace-1);
+}
+
+.champ {
+  display: grid;
+  gap: var(--espace-1);
+}
+
+.formulaire .case {
+  display: flex;
+  gap: var(--espace-2);
+  align-items: start;
+}
+
+.message-erreur {
+  color: var(--erreur);
+  font-size: 0.9rem;
+}
+
+/* ---------- L'espace pro : l'agenda (S4) ---------- */
+
+.agenda {
+  display: grid;
+  gap: var(--espace-2);
+}
+
+.rdv {
+  display: grid;
+  grid-template-columns: 5rem 1fr auto;
+  gap: var(--espace-3);
+  align-items: center;
+  padding: var(--espace-2) var(--espace-3);
+  background: var(--surface);
+  border: 1px solid var(--bord);
+  border-left: 6px solid var(--couleur-employe, var(--marque-primaire));
+  border-radius: calc(var(--marque-arrondi) / 2);
+}
+
+.statut-pending {
+  color: var(--attention);
+}
+
+.statut-confirmed,
+.statut-completed {
+  color: var(--succes);
+}
+
+.statut-cancelled,
+.statut-no_show {
+  color: var(--erreur);
+}
+
+/* ---------- La navigation (S4) ---------- */
+
+.barre {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espace-3);
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--espace-3);
+}
+
+.barre nav {
+  display: flex;
+  gap: var(--espace-3);
+}
+
+.barre nav a {
+  color: var(--texte);
+  text-decoration: none;
+}
+
+.barre nav a.active {
+  color: var(--marque-texte);
+  font-weight: bold;
+}
+
+/* ---------- La marque Mawid, dans la barre de navigation (S4) ---------- */
+
+.logo-mawid {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--marque-texte);
+  text-decoration: none;
+}
+
+.bouton {
+  display: inline-block;
+  text-align: center;
+}
+
+/* ---------- Le tableau de bord (exercice 4.1) ---------- */
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--espace-3);
+}
+
+.kpi .valeur {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--marque-texte);
+}
+
+.histogramme {
+  display: grid;
+  gap: var(--espace-2);
+  max-width: 40rem;
+}
+
+.histogramme-ligne {
+  display: grid;
+  grid-template-columns: 6rem 1fr 3rem;
+  gap: var(--espace-2);
+  align-items: center;
+}
+
+/* --part (de 0 % à 100 %) est posée par le composant, à partir des données */
+.histogramme-barre {
+  block-size: 1rem;
+  inline-size: var(--part, 0%);
+  border-radius: calc(var(--marque-arrondi) / 2);
+  background: var(--marque-primaire);
+}
+
+@media (max-width: 600px) {
+  .rdv {
+    grid-template-columns: 1fr;
+  }
 }

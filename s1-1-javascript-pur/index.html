@@ -3,36 +3,37 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BabStage : prototype en JavaScript pur</title>
+    <title>Mawid : prototype en JavaScript pur</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
-      <h1>BabStage <small>prototype en JavaScript pur</small></h1>
-      <p>Favoris : <strong id="compteur">0</strong></p>
+      <h1>Salon Yasmine <small>Agdal, Rabat · prototype en JavaScript pur</small></h1>
+      <p class="selection">
+        Ma sélection : <strong id="compteur">0</strong> prestation(s) ·
+        <strong id="total">0</strong> DH
+      </p>
     </header>
 
     <section class="outils">
       <label>
-        Ville
-        <select id="ville">
-          <option value="">Toutes les villes</option>
-          <option>Rabat</option>
-          <option>Salé</option>
-          <option>Casablanca</option>
-          <option>Tanger</option>
-          <option>Fès</option>
+        Catégorie
+        <select id="categorie">
+          <option value="">Toutes les catégories</option>
+          <option>Coupe</option>
+          <option>Couleur</option>
+          <option>Soins</option>
         </select>
       </label>
       <label class="case">
-        <input type="checkbox" id="seulement-favoris" />
-        Seulement mes favoris
+        <input type="checkbox" id="seulement-selection" />
+        Seulement ma sélection
       </label>
     </section>
 
     <main id="liste" class="grille"></main>
 
-    <script src="offres.js"></script>
+    <script src="prestations.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

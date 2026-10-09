@@ -28,6 +28,7 @@ services:
       LATENCE: ${LATENCE:-300}
       PANNE: ${PANNE:-0}
       ALEATOIRE: ${ALEATOIRE:-0}
+      AUJOURDHUI: ${AUJOURDHUI:-}
 
   demo:
     image: node:22-alpine

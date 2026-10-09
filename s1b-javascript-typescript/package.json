@@ -3,9 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Exercices de la séance 1 bis : révision générale de JavaScript et de TypeScript",
+  "description": "Exercices de la séance 1 bis : le JavaScript dont le projet Mawid a besoin (série P), et la révision générale (séries BS, TS, AS, RE, EN)",
   "scripts": {
-    "test": "node --test \"bases/*.test.js\" \"async/*.test.js\" \"react/*.test.js\" \"entretien/*.test.js\"",
+    "test": "node --test \"projet/*.test.js\" \"bases/*.test.js\" \"async/*.test.js\" \"react/*.test.js\" \"entretien/*.test.js\"",
+    "test:projet": "node --test \"projet/*.test.js\"",
     "test:bases": "node --test \"bases/*.test.js\"",
     "test:async": "node --test \"async/*.test.js\"",
     "test:react": "node --test \"react/*.test.js\"",

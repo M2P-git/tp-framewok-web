@@ -1,36 +1,36 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { villes, totalGratifications, aUnFavori } from './declaratif.js';
+import { groupes, totalPrix, aUneChoisie } from './declaratif.js';
 
-const offres = [
-  { id: 'o-1', city: 'Rabat', stipendMad: 3000 },
-  { id: 'o-2', city: 'Casablanca', stipendMad: 3500 },
-  { id: 'o-3', city: 'Rabat', stipendMad: 2500 },
-  { id: 'o-4', city: 'Tanger', stipendMad: 0 },
+const prestations = [
+  { id: 'sv-1', group: 'Coupe', priceMad: 135 },
+  { id: 'sv-2', group: 'Couleur', priceMad: 250 },
+  { id: 'sv-3', group: 'Coupe', priceMad: 70 },
+  { id: 'sv-4', group: 'Soins', priceMad: 0 },
 ];
 
-test('villes : sans doublon, dans l\'ordre d\'apparition', () => {
-  assert.deepEqual(villes(offres), ['Rabat', 'Casablanca', 'Tanger']);
-  assert.deepEqual(villes([]), []);
+test("groupes : sans doublon, dans l'ordre d'apparition", () => {
+  assert.deepEqual(groupes(prestations), ['Coupe', 'Couleur', 'Soins']);
+  assert.deepEqual(groupes([]), []);
 });
 
-test('villes : ne modifie pas le tableau d\'origine', () => {
-  const copie = structuredClone(offres);
-  villes(offres);
-  assert.deepEqual(offres, copie);
+test("groupes : ne modifie pas le tableau d'origine", () => {
+  const copie = structuredClone(prestations);
+  groupes(prestations);
+  assert.deepEqual(prestations, copie);
 });
 
-test('totalGratifications', () => {
-  assert.equal(totalGratifications(offres), 9000);
-  assert.equal(totalGratifications([]), 0);
+test('totalPrix', () => {
+  assert.equal(totalPrix(prestations), 455);
+  assert.equal(totalPrix([]), 0);
 });
 
-test('aUnFavori', () => {
-  assert.equal(aUnFavori(offres, new Set(['o-3'])), true);
-  assert.equal(aUnFavori(offres, new Set(['o-9'])), false);
-  assert.equal(aUnFavori(offres, new Set()), false);
-  assert.equal(aUnFavori([], new Set(['o-1'])), false);
+test('aUneChoisie', () => {
+  assert.equal(aUneChoisie(prestations, new Set(['sv-3'])), true);
+  assert.equal(aUneChoisie(prestations, new Set(['sv-9'])), false);
+  assert.equal(aUneChoisie(prestations, new Set()), false);
+  assert.equal(aUneChoisie([], new Set(['sv-1'])), false);
 });
 
 test('le style est déclaratif : ni for, ni while, ni let', () => {

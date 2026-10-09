@@ -1,6 +1,6 @@
 # TP S1.2 : la même page en MPA, en SPA et en SSR
 
-La même liste d'offres BabStage, construite de trois façons, pour **voir** la différence
+La même liste d'offres de BabStage (l'ancien cas fil rouge : les données de cette démo sont dans `donnees-babstage.json`), construite de trois façons, pour **voir** la différence
 au lieu de l'imaginer. Elle accompagne la section « Trois façons de construire une
 application web » du chapitre 1 du cours (exercice AR.1 : le détective).
 

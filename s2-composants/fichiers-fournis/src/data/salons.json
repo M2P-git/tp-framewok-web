@@ -1,0 +1,833 @@
+[
+  {
+    "id": "b-01",
+    "slug": "salon-yasmine-rabat",
+    "name": "Salon Yasmine",
+    "category": "coiffure",
+    "city": "Rabat",
+    "district": "Agdal",
+    "address": "32, avenue Hassan II, Agdal, Rabat",
+    "phone": "05 29 86 89 81",
+    "tagline": "Votre coiffure, sans attente.",
+    "description": "Salon Yasmine, à Agdal (Rabat). Votre coiffure, sans attente. Une équipe de 3 personnes, réservation en ligne 24 h sur 24.",
+    "openingHours": {
+      "mon": [],
+      "tue": [
+        [
+          "10:00",
+          "13:00"
+        ],
+        [
+          "14:00",
+          "20:00"
+        ]
+      ],
+      "wed": [
+        [
+          "10:00",
+          "13:00"
+        ],
+        [
+          "14:00",
+          "20:00"
+        ]
+      ],
+      "thu": [
+        [
+          "10:00",
+          "13:00"
+        ],
+        [
+          "14:00",
+          "20:00"
+        ]
+      ],
+      "fri": [
+        [
+          "10:00",
+          "12:30"
+        ],
+        [
+          "14:30",
+          "20:00"
+        ]
+      ],
+      "sat": [
+        [
+          "09:30",
+          "20:00"
+        ]
+      ],
+      "sun": [
+        [
+          "10:00",
+          "14:00"
+        ]
+      ]
+    },
+    "settings": {
+      "slotStepMinutes": 15,
+      "minNoticeMinutes": 60,
+      "maxDaysAhead": 30,
+      "freeCancellationHours": 24,
+      "autoConfirm": false
+    },
+    "theme": {
+      "primary": "#0f766e",
+      "soft": "#ccfbf1",
+      "fontFamily": "'Trebuchet MS', 'Segoe UI', sans-serif",
+      "radius": "1.25rem",
+      "logoText": "SY"
+    },
+    "plan": "pro",
+    "status": "active",
+    "createdAt": "2026-01-17",
+    "rating": {
+      "average": 4.5,
+      "count": 37
+    },
+    "services": [
+      {
+        "id": "sv-001",
+        "businessId": "b-01",
+        "group": "Coupe",
+        "name": "Coupe femme",
+        "durationMinutes": 45,
+        "priceMad": 135,
+        "description": "Coupe femme, 45 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-002",
+        "businessId": "b-01",
+        "group": "Coupe",
+        "name": "Coupe homme",
+        "durationMinutes": 30,
+        "priceMad": 70,
+        "description": "Coupe homme, 30 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-003",
+        "businessId": "b-01",
+        "group": "Coupe",
+        "name": "Coupe enfant",
+        "durationMinutes": 30,
+        "priceMad": 55,
+        "description": "Coupe enfant, 30 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-004",
+        "businessId": "b-01",
+        "group": "Coupe",
+        "name": "Brushing",
+        "durationMinutes": 30,
+        "priceMad": 110,
+        "description": "Brushing, 30 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-005",
+        "businessId": "b-01",
+        "group": "Couleur",
+        "name": "Coloration racines",
+        "durationMinutes": 60,
+        "priceMad": 250,
+        "description": "Coloration racines, 60 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-006",
+        "businessId": "b-01",
+        "group": "Couleur",
+        "name": "Mèches ou balayage",
+        "durationMinutes": 120,
+        "priceMad": 600,
+        "description": "Mèches ou balayage, 120 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-007",
+        "businessId": "b-01",
+        "group": "Couleur",
+        "name": "Lissage brésilien",
+        "durationMinutes": 150,
+        "priceMad": 900,
+        "description": "Lissage brésilien, 150 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-008",
+        "businessId": "b-01",
+        "group": "Soins",
+        "name": "Soin hydratant à l'huile d'argan",
+        "durationMinutes": 30,
+        "priceMad": 180,
+        "description": "Soin hydratant à l'huile d'argan, 30 minutes.",
+        "active": true
+      }
+    ],
+    "staff": [
+      {
+        "id": "st-001",
+        "firstName": "Siham",
+        "role": "Coiffeuse",
+        "serviceIds": [
+          "sv-001",
+          "sv-002",
+          "sv-003",
+          "sv-004",
+          "sv-005",
+          "sv-006",
+          "sv-007",
+          "sv-008"
+        ],
+        "workingDays": [
+          "tue",
+          "wed",
+          "fri",
+          "sat",
+          "sun"
+        ],
+        "color": "#2563eb"
+      },
+      {
+        "id": "st-002",
+        "firstName": "Sara",
+        "role": "Coiffeuse",
+        "serviceIds": [
+          "sv-002",
+          "sv-003",
+          "sv-004",
+          "sv-005",
+          "sv-006",
+          "sv-007",
+          "sv-008"
+        ],
+        "workingDays": [
+          "tue",
+          "wed",
+          "thu",
+          "fri",
+          "sun"
+        ],
+        "color": "#db2777"
+      },
+      {
+        "id": "st-003",
+        "firstName": "Hajar",
+        "role": "Coiffeuse",
+        "serviceIds": [
+          "sv-001",
+          "sv-005",
+          "sv-006",
+          "sv-008"
+        ],
+        "workingDays": [
+          "tue",
+          "wed",
+          "thu",
+          "sat",
+          "sun"
+        ],
+        "color": "#16a34a"
+      }
+    ]
+  },
+  {
+    "id": "b-06",
+    "slug": "barber-bab-el-had-rabat",
+    "name": "Barber Bab El Had",
+    "category": "barbier",
+    "city": "Rabat",
+    "district": "Hassan",
+    "address": "175, rue Al Andalous, Hassan, Rabat",
+    "phone": "05 38 97 42 59",
+    "tagline": "Coupe, barbe et serviette chaude.",
+    "description": "Barber Bab El Had, à Hassan (Rabat). Coupe, barbe et serviette chaude. Une équipe de 2 personnes, réservation en ligne 24 h sur 24.",
+    "openingHours": {
+      "mon": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "tue": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "wed": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "thu": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "fri": [
+        [
+          "09:00",
+          "12:30"
+        ],
+        [
+          "14:30",
+          "21:00"
+        ]
+      ],
+      "sat": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "sun": [
+        [
+          "10:00",
+          "14:00"
+        ]
+      ]
+    },
+    "settings": {
+      "slotStepMinutes": 15,
+      "minNoticeMinutes": 30,
+      "maxDaysAhead": 14,
+      "freeCancellationHours": 4,
+      "autoConfirm": false
+    },
+    "theme": {
+      "primary": "#0369a1",
+      "soft": "#e0f2fe",
+      "fontFamily": "Georgia, 'Times New Roman', serif",
+      "radius": "0.25rem",
+      "logoText": "BB"
+    },
+    "plan": "pro",
+    "status": "active",
+    "createdAt": "2026-02-14",
+    "rating": {
+      "average": 4.5,
+      "count": 24
+    },
+    "services": [
+      {
+        "id": "sv-048",
+        "businessId": "b-06",
+        "group": "Coupe",
+        "name": "Coupe classique",
+        "durationMinutes": 30,
+        "priceMad": 60,
+        "description": "Coupe classique, 30 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-049",
+        "businessId": "b-06",
+        "group": "Coupe",
+        "name": "Dégradé",
+        "durationMinutes": 45,
+        "priceMad": 80,
+        "description": "Dégradé, 45 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-050",
+        "businessId": "b-06",
+        "group": "Coupe",
+        "name": "Coupe et barbe",
+        "durationMinutes": 60,
+        "priceMad": 100,
+        "description": "Coupe et barbe, 60 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-051",
+        "businessId": "b-06",
+        "group": "Coupe",
+        "name": "Coupe enfant",
+        "durationMinutes": 30,
+        "priceMad": 45,
+        "description": "Coupe enfant, 30 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-052",
+        "businessId": "b-06",
+        "group": "Barbe",
+        "name": "Taille de barbe",
+        "durationMinutes": 20,
+        "priceMad": 35,
+        "description": "Taille de barbe, 20 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-053",
+        "businessId": "b-06",
+        "group": "Barbe",
+        "name": "Rasage à la serviette chaude",
+        "durationMinutes": 30,
+        "priceMad": 60,
+        "description": "Rasage à la serviette chaude, 30 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-054",
+        "businessId": "b-06",
+        "group": "Soins",
+        "name": "Soin du visage homme",
+        "durationMinutes": 30,
+        "priceMad": 110,
+        "description": "Soin du visage homme, 30 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-055",
+        "businessId": "b-06",
+        "group": "Soins",
+        "name": "Coloration de la barbe",
+        "durationMinutes": 30,
+        "priceMad": 90,
+        "description": "Coloration de la barbe, 30 minutes.",
+        "active": true
+      }
+    ],
+    "staff": [
+      {
+        "id": "st-015",
+        "firstName": "Anas",
+        "role": "Barbier",
+        "serviceIds": [
+          "sv-048",
+          "sv-049",
+          "sv-050",
+          "sv-051",
+          "sv-052",
+          "sv-053",
+          "sv-054",
+          "sv-055"
+        ],
+        "workingDays": [
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "sat",
+          "sun"
+        ],
+        "color": "#2563eb"
+      },
+      {
+        "id": "st-016",
+        "firstName": "Amine",
+        "role": "Barbier",
+        "serviceIds": [
+          "sv-049",
+          "sv-050",
+          "sv-051",
+          "sv-052",
+          "sv-053",
+          "sv-055"
+        ],
+        "workingDays": [
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "fri",
+          "sat"
+        ],
+        "color": "#db2777"
+      }
+    ]
+  },
+  {
+    "id": "b-15",
+    "slug": "hammam-zitoun-rabat",
+    "name": "Hammam Zitoun",
+    "category": "hammam-spa",
+    "city": "Rabat",
+    "district": "Hay Riad",
+    "address": "45, rue des Orangers, Hay Riad, Rabat",
+    "phone": "05 37 37 57 30",
+    "tagline": "Un moment pour soi, au calme.",
+    "description": "Hammam Zitoun, à Hay Riad (Rabat). Un moment pour soi, au calme. Une équipe de 3 personnes, réservation en ligne 24 h sur 24.",
+    "openingHours": {
+      "mon": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "tue": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "wed": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "thu": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "fri": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "sat": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "sun": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ]
+    },
+    "settings": {
+      "slotStepMinutes": 30,
+      "minNoticeMinutes": 120,
+      "maxDaysAhead": 30,
+      "freeCancellationHours": 24,
+      "autoConfirm": false
+    },
+    "theme": {
+      "primary": "#047857",
+      "soft": "#d1fae5",
+      "fontFamily": "Georgia, 'Times New Roman', serif",
+      "radius": "1.25rem",
+      "logoText": "HZ"
+    },
+    "plan": "essentiel",
+    "status": "active",
+    "createdAt": "2026-03-24",
+    "rating": {
+      "average": 4.0,
+      "count": 77
+    },
+    "services": [
+      {
+        "id": "sv-110",
+        "businessId": "b-15",
+        "group": "Hammam",
+        "name": "Hammam traditionnel",
+        "durationMinutes": 45,
+        "priceMad": 130,
+        "description": "Hammam traditionnel, 45 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-111",
+        "businessId": "b-15",
+        "group": "Hammam",
+        "name": "Hammam et gommage au savon noir",
+        "durationMinutes": 60,
+        "priceMad": 240,
+        "description": "Hammam et gommage au savon noir, 60 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-112",
+        "businessId": "b-15",
+        "group": "Massages",
+        "name": "Massage relaxant (30 minutes)",
+        "durationMinutes": 30,
+        "priceMad": 225,
+        "description": "Massage relaxant (30 minutes), 30 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-113",
+        "businessId": "b-15",
+        "group": "Massages",
+        "name": "Massage à l'huile d'argan",
+        "durationMinutes": 60,
+        "priceMad": 450,
+        "description": "Massage à l'huile d'argan, 60 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-114",
+        "businessId": "b-15",
+        "group": "Soins",
+        "name": "Enveloppement au ghassoul",
+        "durationMinutes": 30,
+        "priceMad": 160,
+        "description": "Enveloppement au ghassoul, 30 minutes.",
+        "active": true
+      }
+    ],
+    "staff": [
+      {
+        "id": "st-038",
+        "firstName": "Asmae",
+        "role": "Praticienne",
+        "serviceIds": [
+          "sv-110",
+          "sv-111",
+          "sv-112",
+          "sv-113",
+          "sv-114"
+        ],
+        "workingDays": [
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "fri",
+          "sun"
+        ],
+        "color": "#2563eb"
+      },
+      {
+        "id": "st-039",
+        "firstName": "Meryem",
+        "role": "Praticienne",
+        "serviceIds": [
+          "sv-110",
+          "sv-111",
+          "sv-114"
+        ],
+        "workingDays": [
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "sat",
+          "sun"
+        ],
+        "color": "#db2777"
+      },
+      {
+        "id": "st-040",
+        "firstName": "Amine",
+        "role": "Praticien",
+        "serviceIds": [
+          "sv-111",
+          "sv-112",
+          "sv-113",
+          "sv-114"
+        ],
+        "workingDays": [
+          "mon",
+          "tue",
+          "wed",
+          "fri",
+          "sat",
+          "sun"
+        ],
+        "color": "#16a34a"
+      }
+    ]
+  },
+  {
+    "id": "b-27",
+    "slug": "studio-yoga-ifrane-rabat",
+    "name": "Studio Yoga Ifrane",
+    "category": "coach",
+    "city": "Rabat",
+    "district": "Souissi",
+    "address": "42, boulevard Ibn Sina, Souissi, Rabat",
+    "phone": "05 22 23 34 69",
+    "tagline": "Bougez mieux, sans vous blesser.",
+    "description": "Studio Yoga Ifrane, à Souissi (Rabat). Bougez mieux, sans vous blesser. Une équipe de 2 personnes, réservation en ligne 24 h sur 24.",
+    "openingHours": {
+      "mon": [
+        [
+          "07:00",
+          "12:00"
+        ],
+        [
+          "16:00",
+          "21:00"
+        ]
+      ],
+      "tue": [
+        [
+          "07:00",
+          "12:00"
+        ],
+        [
+          "16:00",
+          "21:00"
+        ]
+      ],
+      "wed": [
+        [
+          "07:00",
+          "12:00"
+        ],
+        [
+          "16:00",
+          "21:00"
+        ]
+      ],
+      "thu": [
+        [
+          "07:00",
+          "12:00"
+        ],
+        [
+          "16:00",
+          "21:00"
+        ]
+      ],
+      "fri": [
+        [
+          "07:00",
+          "12:00"
+        ],
+        [
+          "16:00",
+          "21:00"
+        ]
+      ],
+      "sat": [
+        [
+          "08:00",
+          "13:00"
+        ]
+      ],
+      "sun": [
+        [
+          "08:00",
+          "12:00"
+        ]
+      ]
+    },
+    "settings": {
+      "slotStepMinutes": 30,
+      "minNoticeMinutes": 120,
+      "maxDaysAhead": 30,
+      "freeCancellationHours": 12,
+      "autoConfirm": true
+    },
+    "theme": {
+      "primary": "#6d28d9",
+      "soft": "#ede9fe",
+      "fontFamily": "Georgia, 'Times New Roman', serif",
+      "radius": "0.25rem",
+      "logoText": "SY"
+    },
+    "plan": "pro",
+    "status": "active",
+    "createdAt": "2026-09-20",
+    "rating": {
+      "average": 4.1,
+      "count": 35
+    },
+    "services": [
+      {
+        "id": "sv-183",
+        "businessId": "b-27",
+        "group": "Coaching",
+        "name": "Séance découverte",
+        "durationMinutes": 30,
+        "priceMad": 0,
+        "description": "Séance découverte, 30 minutes. Offerte : une première séance pour faire connaissance.",
+        "active": true
+      },
+      {
+        "id": "sv-184",
+        "businessId": "b-27",
+        "group": "Coaching",
+        "name": "Coaching individuel",
+        "durationMinutes": 60,
+        "priceMad": 250,
+        "description": "Coaching individuel, 60 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-185",
+        "businessId": "b-27",
+        "group": "Coaching",
+        "name": "Coaching en duo",
+        "durationMinutes": 60,
+        "priceMad": 350,
+        "description": "Coaching en duo, 60 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-186",
+        "businessId": "b-27",
+        "group": "Bien-être",
+        "name": "Yoga individuel",
+        "durationMinutes": 60,
+        "priceMad": 300,
+        "description": "Yoga individuel, 60 minutes.",
+        "active": true
+      },
+      {
+        "id": "sv-187",
+        "businessId": "b-27",
+        "group": "Bien-être",
+        "name": "Pilates individuel",
+        "durationMinutes": 60,
+        "priceMad": 300,
+        "description": "Pilates individuel, 60 minutes.",
+        "active": true
+      }
+    ],
+    "staff": [
+      {
+        "id": "st-075",
+        "firstName": "Houda",
+        "role": "Coach",
+        "serviceIds": [
+          "sv-183",
+          "sv-184",
+          "sv-185",
+          "sv-186",
+          "sv-187"
+        ],
+        "workingDays": [
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "fri",
+          "sat"
+        ],
+        "color": "#2563eb"
+      },
+      {
+        "id": "st-076",
+        "firstName": "Anas",
+        "role": "Coach",
+        "serviceIds": [
+          "sv-183",
+          "sv-184",
+          "sv-185",
+          "sv-186",
+          "sv-187"
+        ],
+        "workingDays": [
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "fri",
+          "sun"
+        ],
+        "color": "#db2777"
+      }
+    ]
+  }
+]

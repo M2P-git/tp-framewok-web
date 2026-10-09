@@ -1,29 +1,29 @@
 // TP S1.4 : du comment au quoi.
 // Réécrivez chaque fonction en style déclaratif : pas de for, pas de while, pas de let.
 
-// a. les villes, sans doublon.
+// a. les catégories (champ group) des prestations, sans doublon.
 // Version impérative :
-//   const villes = [];
-//   for (const o of offres) { if (!villes.includes(o.city)) villes.push(o.city); }
-//   return villes;
-export function villes(offres) {
+//   const groupes = [];
+//   for (const p of prestations) { if (!groupes.includes(p.group)) groupes.push(p.group); }
+//   return groupes;
+export function groupes(prestations) {
   throw new Error('à écrire');
 }
 
-// b. le total des gratifications (champ stipendMad).
+// b. le prix total des prestations (champ priceMad).
 // Version impérative :
 //   let total = 0;
-//   for (const o of offres) { total += o.stipendMad; }
+//   for (const p of prestations) { total += p.priceMad; }
 //   return total;
-export function totalGratifications(offres) {
+export function totalPrix(prestations) {
   throw new Error('à écrire');
 }
 
-// c. y a-t-il au moins un favori ? (favoris est un Set d'identifiants)
+// c. au moins une prestation est-elle choisie ? (selection est un Set d'identifiants)
 // Version impérative :
-//   let aFavori = false;
-//   for (const o of offres) { if (favoris.has(o.id)) { aFavori = true; break; } }
-//   return aFavori;
-export function aUnFavori(offres, favoris) {
+//   let aChoisie = false;
+//   for (const p of prestations) { if (selection.has(p.id)) { aChoisie = true; break; } }
+//   return aChoisie;
+export function aUneChoisie(prestations, selection) {
   throw new Error('à écrire');
 }

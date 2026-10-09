@@ -8,16 +8,24 @@ body {
 }
 header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
+  gap: 0.5rem 2rem;
 }
 h1 small {
   font-size: 0.5em;
   color: #666;
   font-weight: normal;
 }
+.selection {
+  background: #ccfbf1;
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+}
 .outils {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   margin: 1rem 0;
 }
@@ -36,17 +44,17 @@ h1 small {
   font-size: 1rem;
   margin: 0 0 0.4rem;
 }
-.carte .entreprise {
+.carte .details {
   color: #555;
   margin: 0 0 0.6rem;
 }
-.carte.est-favori {
-  border: 2px solid #d98c00;
-  background: #fff8e8;
+.carte.est-choisie {
+  border: 2px solid #0f766e;
+  background: #f0fdfa;
 }
-button.favori {
+button.choisir {
   cursor: pointer;
-  border: 1px solid #d98c00;
+  border: 1px solid #0f766e;
   background: white;
   border-radius: 4px;
   padding: 0.2rem 0.6rem;

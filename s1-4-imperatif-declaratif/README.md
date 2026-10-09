@@ -2,16 +2,16 @@
 
 Le but : réécrire trois boucles en style **déclaratif** (on dit *quoi* obtenir, pas *comment*).
 
-Les trois fonctions sont dans `declaratif.js`. Pour chacune, le code **impératif** est donné en
+Les trois fonctions sont dans `declaratif.js`, et portent sur les prestations d'un salon Mawid. Pour chacune, le code **impératif** est donné en
 commentaire. Remplacez le corps de la fonction par une version **déclarative** : sans boucle
 `for` ni `while`, sans variable déclarée avec `let`, avec les méthodes de tableau (`map`,
 `filter`, `reduce`, `some`…) et, si besoin, `new Set`.
 
 | Fonction | Ce qu'elle renvoie |
 | --- | --- |
-| `villes(offres)` | les villes des offres, **sans doublon** |
-| `totalGratifications(offres)` | la somme des champs `stipendMad` |
-| `aUnFavori(offres, favoris)` | `true` si au moins une offre est dans l'ensemble `favoris` |
+| `groupes(prestations)` | les catégories des prestations (champ `group`), **sans doublon** |
+| `totalPrix(prestations)` | la somme des champs `priceMad` |
+| `aUneChoisie(prestations, selection)` | `true` si au moins une prestation est dans l'ensemble `selection` |
 
 ## Vérifier
 

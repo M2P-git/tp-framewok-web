@@ -25,7 +25,7 @@ const PORT = Number(process.env.PORT ?? 3002);
 const LATENCE = Number(process.env.LATENCE ?? 400);
 const JS_DELAI = Number(process.env.JS_DELAI ?? 1500);
 
-const db = JSON.parse(readFileSync(new URL('../donnees/db.json', import.meta.url), 'utf8'));
+const db = JSON.parse(readFileSync(new URL('./donnees-babstage.json', import.meta.url), 'utf8'));
 const publiees = db.offers
   .filter((o) => o.status === 'published')
   .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt) || a.id.localeCompare(b.id));

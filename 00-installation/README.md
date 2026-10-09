@@ -32,13 +32,21 @@ Installez Visual Studio Code, puis ses extensions **ESLint** et **Prettier**. Ou
 Dans le dossier de votre choix :
 
 ```bash
-npm create vite@latest babstage-web -- --template react-ts
-cd babstage-web
+npm create vite@latest mawid-web -- --template react-ts
+cd mawid-web
 npm install
 npm run dev
 ```
 
 Ouvrez l'adresse affichée, `http://localhost:5173` : la page d'accueil de Vite et React s'affiche. **Checkpoint réussi.**
+
+## Checkpoint 5 (facultatif) : un assistant IA dans l'éditeur
+
+Avec votre adresse de l'école, demandez le [GitHub Student Developer Pack](https://education.github.com/pack) :
+il donne accès gratuitement à GitHub Copilot. D'autres assistants conviennent aussi (Claude,
+ChatGPT, Cursor...). Règle du module : l'assistant est un **binôme, jamais l'auteur** ; vous
+tiendrez un journal de son usage (`../modeles/journal-ia.md`). Pendant la série P du TP S1 bis,
+**désactivez l'autocomplétion** : on apprend à écrire avant d'apprendre à relire.
 
 ## Les problèmes les plus fréquents
 
