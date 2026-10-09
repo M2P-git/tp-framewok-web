@@ -1,5 +1,8 @@
 # Les programmes des TP, sans installer Node.js (optionnel).
 #
+#   docker compose up -d --build                 construit puis démarre « la machine » (1re fois : 1 à 3 min),
+#                                                avec l'API (3001) et la démo (3002), en arrière-plan
+#   docker compose exec node bash                ouvre un terminal DANS la machine
 #   docker compose up api                        l'API simulée (http://localhost:3001)
 #   docker compose up demo                       la démo MPA, SPA, SSR du TP S1.2 (http://localhost:3002)
 #   docker compose run --rm labo 03-ordre.js 2   un exercice du TP S1.3
@@ -55,3 +58,21 @@ services:
     volumes:
       - .:/tp:ro
     profiles: ["outils"]
+
+  # La « machine » de travail : Node.js 24, npm et Git, avec votre dépôt dedans.
+  # Fabriquée à partir de docker/Dockerfile ; on y entre avec : docker compose exec node bash
+  node:
+    build:
+      context: ./docker              # fabrique l'image avec le Dockerfile de ce dossier
+    working_dir: /tp                 # on arrive dans /tp
+    command: ["sleep", "infinity"]   # la machine n'exécute rien : elle attend qu'on s'y connecte
+    init: true                       # arrêt rapide avec « docker compose down »
+    volumes:
+      - .:/tp                        # le dépôt de votre ordinateur (.) devient le dossier /tp de la machine
+    ports:
+      - "5173:5173"                  # React (Vite)
+      - "3003:3003"                  # Next.js
+      - "4200:4200"                  # Angular
+    environment:
+      CHOKIDAR_USEPOLLING: "true"    # recharger la page quand un fichier change,
+      WATCHPACK_POLLING: "true"      # même dans un dossier partagé (Windows, macOS)

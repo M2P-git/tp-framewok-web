@@ -51,4 +51,4 @@ Ouvrez l'adresse affichée, `http://localhost:5173` : la page d'accueil de Vite 
 
 **Plan B.** Si votre ordinateur est trop lent ou si l'installation échoue, [StackBlitz](https://stackblitz.com) fait tourner Node.js et Vite dans le navigateur, sans rien installer.
 
-**Plan C : Docker.** Si Docker Desktop est installé, les programmes de ce dépôt (l'API simulée, la démo de S1, le labo) se lancent sans Node.js : voir le [README](../README.md) à la racine. Pour votre projet React, installez tout de même Node.js : c'est l'outil de travail de tout le module.
+**Plan C : Docker.** Si Docker Desktop est installé, une « machine » avec Node.js 24 se lance en deux commandes, et vous pouvez y créer et lancer votre projet React ; l'API simulée, la démo de S1 et le labo se lancent aussi sans Node.js. Voir [Travailler avec Docker](../README.md#travailler-avec-docker-optionnel) dans le README à la racine. Node.js installé sur votre ordinateur reste l'outil de référence du module.
