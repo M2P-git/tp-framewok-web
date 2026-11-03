@@ -1,6 +1,6 @@
 // src/App.jsx : réserver un brushing (notions 9 à 11)
 // L'API doit tourner : node api-simulee/serveur.mjs (dépôt des TP)
-// Pas de validation dans le navigateur (notion 8) : on voit ce que répond le serveur.
+// Sans valider() (notion 8) : on voit ce que dit le serveur.
 import { useState, useEffect } from 'react';
 import './App.css';
 
