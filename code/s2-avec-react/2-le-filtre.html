@@ -1,0 +1,127 @@
+<!doctype html>
+<!--
+  Avec React 2 : le filtre. Généré par generer.py depuis jsx/filtre.jsx : pour changer le code, modifier le .jsx.
+  Le code est celui d'un src/App.jsx de projet Vite. Pour s'ouvrir par double-clic, sans outil
+  ni connexion, la page charge React et Babel (qui traduit le JSX) depuis lib/, à côté.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Avec React 2 : le filtre</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+      /* src/App.css : les styles des démos de la séance 2 (la carte, les boutons). */
+      .carte {
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        margin: 0.5rem 0;
+        max-width: 360px;
+      }
+      .choisie {
+        border-color: green;
+      }
+      button {
+        font-size: 1rem;
+        padding: 0.3rem 0.8rem;
+      }
+    </style>
+    <script src="lib/react.development.js"></script>
+    <script src="lib/react-dom.development.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useState } = React;
+      // src/App.jsx : le catalogue avec filtre (notions 12, 13)
+
+      // Les données : un objet par prestation
+      const PRESTATIONS = [
+        { id: 'sv-001', group: 'Coupe',
+          name: 'Coupe femme', priceMad: 135 },
+        { id: 'sv-002', group: 'Coupe',
+          name: 'Coupe homme', priceMad: 70 },
+        { id: 'sv-005', group: 'Couleur',
+          name: 'Coloration racines', priceMad: 250 },
+      ];
+
+      // Le total se calcule à partir de la sélection
+      function calculerTotal(selection) {
+        let somme = 0;
+        for (const prestation of PRESTATIONS) {
+          if (selection.includes(prestation.id)) {
+            somme = somme + prestation.priceMad;
+          }
+        }
+        return somme;
+      }
+
+      // La carte affiche ce qu'on lui donne, et prévient au clic
+      function CarteService({ nom, prix, choisie, onBasculer }) {
+        const classe = choisie ? 'carte choisie' : 'carte';
+        return (
+          <article className={classe}>
+            <h3>{nom}</h3>
+            <p>{prix} DH</p>
+            <button onClick={onBasculer}>
+              {choisie ? '✓ Ajoutée' : '+ Ajouter'}
+            </button>
+          </article>
+        );
+      }
+
+      function Catalogue() {
+        const [selection, setSelection] = useState([]);
+        const [filtre, setFiltre] = useState('');
+
+        // Tout le reste se calcule à chaque affichage
+        const visibles = PRESTATIONS.filter((prestation) =>
+          filtre === '' || prestation.group === filtre);
+        const total = calculerTotal(selection);
+
+        // On remplace la sélection par une nouvelle liste
+        function basculer(id) {
+          if (selection.includes(id)) {
+            setSelection(selection.filter((x) => x !== id));
+          } else {
+            setSelection([...selection, id]);
+          }
+        }
+
+        return (
+          <>
+            <h1>Salon Yasmine</h1>
+            <label>
+              Catégorie{' '}
+              <select id="categorie" value={filtre}
+                onChange={(e) => setFiltre(e.target.value)}>
+                <option value="">Toutes</option>
+                <option>Coupe</option>
+                <option>Couleur</option>
+              </select>
+            </label>
+            <p>Total : {total} DH</p>
+            <main>
+              {visibles.map((prestation) => (
+                <CarteService
+                  key={prestation.id}
+                  nom={prestation.name}
+                  prix={prestation.priceMad}
+                  choisie={selection.includes(prestation.id)}
+                  onBasculer={() => basculer(prestation.id)}
+                />
+              ))}
+            </main>
+          </>
+        );
+      }
+
+      function App() {
+        return <Catalogue />;
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>

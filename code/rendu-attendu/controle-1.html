@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rendu attendu · Préparer le contrôle 1 : les deux exercices</title>
+<style>
+  :root { --encre: #1d1d2b; --discret: #5b5b6b; --bleu: #3333b3; --fond: #f6f6fa; --cadre: #d7d7e3; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--encre); font: 16px/1.5 system-ui, sans-serif; }
+  header { background: var(--bleu); color: #fff; padding: 1.5rem 1rem; }
+  header h1 { margin: 0 auto; max-width: 1040px; font-size: 1.6rem; }
+  header p { margin: 0.4rem auto 0; max-width: 1040px; opacity: 0.9; }
+  main { max-width: 1040px; margin: 0 auto; padding: 1rem; }
+  .note { background: #fff7e6; border-left: 4px solid #cc6600; padding: 0.6rem 0.9rem; }
+  section { background: #fff; border: 1px solid var(--cadre); border-radius: 8px; padding: 0.8rem 1rem 1rem; margin: 1rem 0; }
+  h2 { margin: 0 0 0.3rem; font-size: 1.15rem; color: var(--bleu); }
+  section > p { margin: 0 0 0.6rem; }
+  .papier { color: var(--discret); font-style: italic; }
+  .etats { display: flex; flex-wrap: wrap; gap: 1rem; }
+  figure { margin: 0; flex: 0 1 470px; min-width: 0; }
+  figcaption { font-size: 0.9rem; color: var(--discret); margin-bottom: 0.3rem; }
+  iframe { width: 100%; border: 2px solid var(--cadre); border-radius: 6px; background: #fff; pointer-events: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Rendu attendu · Préparer le contrôle 1 : les deux exercices</h1>
+  <p>Ce que doit afficher votre page à la fin de chaque exercice. Ce sont des images figées : elles montrent le résultat, pas le code.</p>
+</header>
+<main>
+<p class="note">Les exercices se font sur papier : ces écrans montrent ce que votre code afficherait. Pour l'exercice 2, l'API tourne.</p>
+<section><h2>Exercice 1 · La carte du barbier (toutes les questions)</h2><p>Le menu des groupes, le total, et une carte par prestation ; les cartes choisies sont vertes.</p><div class="etats"><figure><figcaption>Au départ</figcaption><iframe title="Au départ" style="height:346px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des corrections du contrôle 1 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem 0.6rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.choisie {
+  border-color: green;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button,
+select {
+  font-size: 1rem;
+  padding: 0.2rem 0.6rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;select&gt;&lt;option value=&quot;&quot; selected=&quot;&quot;&gt;Toutes&lt;/option&gt;&lt;option&gt;Coupe&lt;/option&gt;&lt;option&gt;Barbe&lt;/option&gt;&lt;/select&gt;&lt;p&gt;Total : 0 DH&lt;/p&gt;&lt;main&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Coupe classique&lt;/h3&gt;&lt;p&gt;60 DH&lt;/p&gt;&lt;button&gt;+ Choisir&lt;/button&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Dégradé&lt;/h3&gt;&lt;p&gt;80 DH&lt;/p&gt;&lt;button&gt;+ Choisir&lt;/button&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Taille de barbe&lt;/h3&gt;&lt;p&gt;35 DH&lt;/p&gt;&lt;button&gt;+ Choisir&lt;/button&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Rasage&lt;/h3&gt;&lt;p&gt;60 DH&lt;/p&gt;&lt;button&gt;+ Choisir&lt;/button&gt;&lt;/article&gt;&lt;/main&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure><figure><figcaption>Après « Dégradé » puis « Taille de barbe »</figcaption><iframe title="Après « Dégradé » puis « Taille de barbe »" style="height:352px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des corrections du contrôle 1 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem 0.6rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.choisie {
+  border-color: green;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button,
+select {
+  font-size: 1rem;
+  padding: 0.2rem 0.6rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;select&gt;&lt;option value=&quot;&quot; selected=&quot;&quot;&gt;Toutes&lt;/option&gt;&lt;option&gt;Coupe&lt;/option&gt;&lt;option&gt;Barbe&lt;/option&gt;&lt;/select&gt;&lt;p&gt;Total : 115 DH&lt;/p&gt;&lt;main&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Coupe classique&lt;/h3&gt;&lt;p&gt;60 DH&lt;/p&gt;&lt;button&gt;+ Choisir&lt;/button&gt;&lt;/article&gt;&lt;article class=&quot;carte choisie&quot;&gt;&lt;h3&gt;Dégradé&lt;/h3&gt;&lt;p&gt;80 DH&lt;/p&gt;&lt;button&gt;✓ Choisie&lt;/button&gt;&lt;/article&gt;&lt;article class=&quot;carte choisie&quot;&gt;&lt;h3&gt;Taille de barbe&lt;/h3&gt;&lt;p&gt;35 DH&lt;/p&gt;&lt;button&gt;✓ Choisie&lt;/button&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Rasage&lt;/h3&gt;&lt;p&gt;60 DH&lt;/p&gt;&lt;button&gt;+ Choisir&lt;/button&gt;&lt;/article&gt;&lt;/main&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 2 · L'annuaire d'une ville (toutes les questions)</h2><p>Le menu des villes, puis la liste des établissements de la ville choisie.</p><div class="etats"><figure><figcaption>Au départ : Rabat</figcaption><iframe title="Au départ : Rabat" style="height:264px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des corrections du contrôle 1 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem 0.6rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.choisie {
+  border-color: green;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button,
+select {
+  font-size: 1rem;
+  padding: 0.2rem 0.6rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;select&gt;&lt;option selected=&quot;&quot;&gt;Rabat&lt;/option&gt;&lt;option&gt;Casablanca&lt;/option&gt;&lt;option&gt;Fès&lt;/option&gt;&lt;/select&gt;&lt;ul&gt;&lt;li&gt;Barber Bab El Had&lt;/li&gt;&lt;li&gt;Barbershop Oudaya&lt;/li&gt;&lt;li&gt;Cabinet Kiné Agdal&lt;/li&gt;&lt;li&gt;Centre de rééducation Souissi&lt;/li&gt;&lt;li&gt;Hammam Zitoun&lt;/li&gt;&lt;li&gt;Institut Rose des Sables&lt;/li&gt;&lt;li&gt;Salon Yasmine&lt;/li&gt;&lt;li&gt;Studio Yoga Ifrane&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure><figure><figcaption>Après le choix de Casablanca</figcaption><iframe title="Après le choix de Casablanca" style="height:243px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des corrections du contrôle 1 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem 0.6rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.choisie {
+  border-color: green;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button,
+select {
+  font-size: 1rem;
+  padding: 0.2rem 0.6rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;select&gt;&lt;option&gt;Rabat&lt;/option&gt;&lt;option selected=&quot;&quot;&gt;Casablanca&lt;/option&gt;&lt;option&gt;Fès&lt;/option&gt;&lt;/select&gt;&lt;ul&gt;&lt;li&gt;Barbier Kasbah&lt;/li&gt;&lt;li&gt;Coach Atlas&lt;/li&gt;&lt;li&gt;FitLab Sidi Maarouf&lt;/li&gt;&lt;li&gt;Institut Nour Beauté&lt;/li&gt;&lt;li&gt;Kiné Santé Maârif&lt;/li&gt;&lt;li&gt;Spa Oasis&lt;/li&gt;&lt;li&gt;Studio Nakhla&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+</main>
+</body>
+</html>

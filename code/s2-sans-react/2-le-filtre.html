@@ -1,0 +1,85 @@
+<!doctype html>
+<!--
+  Sans React 2 : le filtre fait perdre les choix (cas B de la diapo
+  « 2 · Trois changements ordinaires, trois bugs », séance 2).
+  Le choix est noté dans la classe « choisie » de chaque carte, le total dans le texte de la page.
+
+  Pour voir le bug :
+    1. ajouter « Coupe femme » : total 135 DH ;
+    2. choisir la catégorie « Couleur », puis revenir à « Toutes » ;
+    3. la coupe paraît libre : l'ajouter à nouveau, le total passe à 270 DH.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sans React 2 : le filtre</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 2rem auto; }
+      .carte { border: 2px solid #ccc; border-radius: 8px; padding: 0.5rem 1rem; margin: 0.5rem 0; }
+      .choisie { border-color: green; }
+    </style>
+  </head>
+  <body>
+    <h1>Salon Yasmine</h1>
+    <label>
+      Catégorie
+      <select id="categorie">
+        <option value="">Toutes</option>
+        <option>Coupe</option>
+        <option>Couleur</option>
+      </select>
+    </label>
+    <p>Total :
+      <span id="total">0</span> DH</p>
+    <main id="liste"></main>
+
+    <script>
+      const PRESTATIONS = [
+        { id: 'sv-001', group: 'Coupe', name: 'Coupe femme', priceMad: 135 },
+        { id: 'sv-002', group: 'Coupe', name: 'Coupe homme', priceMad: 70 },
+        { id: 'sv-005', group: 'Couleur', name: 'Coloration racines', priceMad: 250 },
+      ];
+      const liste = document.querySelector('#liste');
+      const total = document.querySelector('#total');
+
+      // Crée la carte d'une prestation ; le clic modifie la carte et le total, comme dans 1-une-carte.html
+      function creerCarte(prestation) {
+        const carte = document.createElement('article');
+        carte.className = 'carte';
+        carte.innerHTML = `
+          <h3>${prestation.name}</h3>
+          <p>${prestation.priceMad} DH</p>
+          <button>+ Ajouter</button>
+        `;
+        const bouton = carte.querySelector('button');
+        bouton.addEventListener('click', () => {
+          carte.classList.toggle('choisie');
+          if (carte.classList.contains('choisie')) {
+            bouton.textContent = '✓ Ajoutée';
+            total.textContent = Number(total.textContent) + prestation.priceMad;
+          } else {
+            bouton.textContent = '+ Ajouter';
+            total.textContent = Number(total.textContent) - prestation.priceMad;
+          }
+        });
+        return carte;
+      }
+
+      // Le filtre vide la liste et recrée les cartes : les classes « choisie » disparaissent,
+      // mais le total, écrit ailleurs dans la page, ne bouge pas.
+      function afficherCartes(categorie) {
+        liste.innerHTML = '';
+        for (const prestation of PRESTATIONS) {
+          if (categorie === '' || prestation.group === categorie) {
+            liste.appendChild(creerCarte(prestation));
+          }
+        }
+      }
+
+      afficherCartes('');
+      document.querySelector('#categorie').addEventListener('change', (e) => {
+        afficherCartes(e.target.value);
+      });
+    </script>
+  </body>
+</html>

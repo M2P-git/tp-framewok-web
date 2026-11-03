@@ -1,0 +1,55 @@
+<!doctype html>
+<!--
+  Séance 3, démo 2 : quand le serveur dit non, ou ne répond pas (notion 3).
+  L'API doit tourner (dépôt des TP : node api-simulee/serveur.mjs, port 3001).
+  Essayer : salon-inconnu dans l'adresse (le serveur répond 404), puis arrêter l'API (Ctrl+C).
+-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>S3, démo 2 : les erreurs</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; }
+      button { font-size: 1rem; padding: 0.3rem 0.8rem; }
+      li { margin: 0.2rem 0; }
+      #message { color: #b31a1a; font-weight: bold; }
+    </style>
+  </head>
+  <body>
+    <button id="charger">Charger les prestations</button>
+    <p id="message"></p>
+    <ul id="liste"></ul>
+
+    <script>
+      // Essayez salon-inconnu : le serveur répond 404
+      const ADRESSE = 'http://localhost:3001/api'
+        + '/businesses/salon-yasmine-rabat/services';
+      const message = document.querySelector('#message');
+      const liste = document.querySelector('#liste');
+
+      async function charger() {
+        message.textContent = '';
+        liste.textContent = '';
+        try {
+          const reponse = await fetch(ADRESSE);
+          // Le serveur a répondu, mais peut-être pour dire non
+          if (!reponse.ok) {
+            message.textContent = 'Erreur ' + reponse.status;
+            return;
+          }
+          const prestations = await reponse.json();
+          for (const prestation of prestations) {
+            const li = document.createElement('li');
+            li.textContent = prestation.name;
+            liste.append(li);
+          }
+        } catch {
+          // Le serveur n'a pas répondu du tout : il est arrêté, ou le réseau est coupé
+          message.textContent = 'Le serveur ne répond pas.';
+        }
+      }
+
+      document.querySelector('#charger').addEventListener('click', charger);
+    </script>
+  </body>
+</html>

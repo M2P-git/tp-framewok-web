@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rendu attendu · Séance 2 : Découvrir React</title>
+<style>
+  :root { --encre: #1d1d2b; --discret: #5b5b6b; --bleu: #3333b3; --fond: #f6f6fa; --cadre: #d7d7e3; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--encre); font: 16px/1.5 system-ui, sans-serif; }
+  header { background: var(--bleu); color: #fff; padding: 1.5rem 1rem; }
+  header h1 { margin: 0 auto; max-width: 1040px; font-size: 1.6rem; }
+  header p { margin: 0.4rem auto 0; max-width: 1040px; opacity: 0.9; }
+  main { max-width: 1040px; margin: 0 auto; padding: 1rem; }
+  .note { background: #fff7e6; border-left: 4px solid #cc6600; padding: 0.6rem 0.9rem; }
+  section { background: #fff; border: 1px solid var(--cadre); border-radius: 8px; padding: 0.8rem 1rem 1rem; margin: 1rem 0; }
+  h2 { margin: 0 0 0.3rem; font-size: 1.15rem; color: var(--bleu); }
+  section > p { margin: 0 0 0.6rem; }
+  .papier { color: var(--discret); font-style: italic; }
+  .etats { display: flex; flex-wrap: wrap; gap: 1rem; }
+  figure { margin: 0; flex: 0 1 470px; min-width: 0; }
+  figcaption { font-size: 0.9rem; color: var(--discret); margin-bottom: 0.3rem; }
+  iframe { width: 100%; border: 2px solid var(--cadre); border-radius: 6px; background: #fff; pointer-events: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Rendu attendu · Séance 2 : Découvrir React</h1>
+  <p>Ce que doit afficher votre page à la fin de chaque exercice. Ce sont des images figées : elles montrent le résultat, pas le code.</p>
+</header>
+<main>
+<section><h2>Exercice 3 · Un compteur de plus</h2><p>Sous le total, la ligne « Prestations choisies » suit le choix de la coupe.</p><div class="etats"><figure><figcaption>Au départ</figcaption><iframe title="Au départ" style="height:277px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 2rem auto; }
+      .carte { border: 2px solid #ccc; border-radius: 8px; padding: 0.5rem 1rem; }
+      .choisie { border-color: green; }
+    &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;article id=&quot;coupe&quot; class=&quot;carte&quot;&gt;
+      &lt;h3&gt;Coupe femme&lt;/h3&gt;
+      &lt;p&gt;45 min · 135 DH&lt;/p&gt;
+      &lt;button&gt;+ Ajouter&lt;/button&gt;
+    &lt;/article&gt;
+    &lt;p&gt;Total :
+      &lt;span id=&quot;total&quot;&gt;0&lt;/span&gt; DH&lt;/p&gt;
+    &lt;p&gt;Prestations choisies : &lt;span id=&quot;compteur&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure><figure><figcaption>Après un clic sur « Ajouter »</figcaption><iframe title="Après un clic sur « Ajouter »" style="height:277px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 2rem auto; }
+      .carte { border: 2px solid #ccc; border-radius: 8px; padding: 0.5rem 1rem; }
+      .choisie { border-color: green; }
+    &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;article id=&quot;coupe&quot; class=&quot;carte choisie&quot;&gt;
+      &lt;h3&gt;Coupe femme&lt;/h3&gt;
+      &lt;p&gt;45 min · 135 DH&lt;/p&gt;
+      &lt;button&gt;✓ Ajoutée&lt;/button&gt;
+    &lt;/article&gt;
+    &lt;p&gt;Total :
+      &lt;span id=&quot;total&quot;&gt;135&lt;/span&gt; DH&lt;/p&gt;
+    &lt;p&gt;Prestations choisies : &lt;span id=&quot;compteur&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 6 · Votre projet tourne : la carte du Brushing</h2><p>La carte du Brushing ; au clic, elle passe au vert et le total affiche 110 DH.</p><div class="etats"><figure><figcaption>Au départ</figcaption><iframe title="Au départ" style="height:241px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 2 (la carte, les boutons). */
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  max-width: 360px;
+}
+.choisie {
+  border-color: green;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Brushing&lt;/h3&gt;&lt;p&gt;30 min · 110 DH&lt;/p&gt;&lt;button&gt;+ Ajouter&lt;/button&gt;&lt;/article&gt;&lt;p&gt;Total : 0 DH&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure><figure><figcaption>Après un clic sur « Ajouter »</figcaption><iframe title="Après un clic sur « Ajouter »" style="height:244px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 2 (la carte, les boutons). */
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  max-width: 360px;
+}
+.choisie {
+  border-color: green;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;article class=&quot;carte choisie&quot;&gt;&lt;h3&gt;Brushing&lt;/h3&gt;&lt;p&gt;30 min · 110 DH&lt;/p&gt;&lt;button&gt;✓ Ajoutée&lt;/button&gt;&lt;/article&gt;&lt;p&gt;Total : 110 DH&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 9 · Une carte pour toutes</h2><p>Trois cartes, écrites avec un seul composant CarteService.</p><div class="etats"><figure><figcaption>Le résultat</figcaption><iframe title="Le résultat" style="height:427px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 2 (la carte, les boutons). */
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  max-width: 360px;
+}
+.choisie {
+  border-color: green;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;main&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Coupe femme&lt;/h3&gt;&lt;p&gt;45 min · 135 DH&lt;/p&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Coupe homme&lt;/h3&gt;&lt;p&gt;30 min · 70 DH&lt;/p&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Brushing&lt;/h3&gt;&lt;p&gt;30 min · 110 DH&lt;/p&gt;&lt;/article&gt;&lt;/main&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 10 · Le bouton favori</h2><p>Sous la carte, un bouton qui passe de « ☆ Ajouter aux favoris » à « ★ Favori », et revient au clic suivant.</p><div class="etats"><figure><figcaption>Au départ</figcaption><iframe title="Au départ" style="height:291px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 2 (la carte, les boutons). */
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  max-width: 360px;
+}
+.choisie {
+  border-color: green;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Coupe femme&lt;/h3&gt;&lt;p&gt;45 min · 135 DH&lt;/p&gt;&lt;button&gt;+ Ajouter&lt;/button&gt;&lt;/article&gt;&lt;p&gt;Total : 0 DH&lt;/p&gt;&lt;button&gt;☆ Ajouter aux favoris&lt;/button&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure><figure><figcaption>Après un clic sur le favori</figcaption><iframe title="Après un clic sur le favori" style="height:291px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 2 (la carte, les boutons). */
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  max-width: 360px;
+}
+.choisie {
+  border-color: green;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Coupe femme&lt;/h3&gt;&lt;p&gt;45 min · 135 DH&lt;/p&gt;&lt;button&gt;+ Ajouter&lt;/button&gt;&lt;/article&gt;&lt;p&gt;Total : 0 DH&lt;/p&gt;&lt;button&gt;★ Favori&lt;/button&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 11 · La liste des noms</h2><p>Une liste à puces : les 8 prestations du Salon Yasmine (avec le bonus, le prix après le nom).</p><div class="etats"><figure><figcaption>Le résultat, avec le bonus</figcaption><iframe title="Le résultat, avec le bonus" style="height:272px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 2 (la carte, les boutons). */
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  max-width: 360px;
+}
+.choisie {
+  border-color: green;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;h2&gt;Les prestations&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Coupe femme : 135 DH&lt;/li&gt;&lt;li&gt;Coupe homme : 70 DH&lt;/li&gt;&lt;li&gt;Coupe enfant : 55 DH&lt;/li&gt;&lt;li&gt;Brushing : 110 DH&lt;/li&gt;&lt;li&gt;Coloration racines : 250 DH&lt;/li&gt;&lt;li&gt;Mèches ou balayage : 600 DH&lt;/li&gt;&lt;li&gt;Lissage brésilien : 900 DH&lt;/li&gt;&lt;li&gt;Soin à l'argan : 180 DH&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+</main>
+</body>
+</html>

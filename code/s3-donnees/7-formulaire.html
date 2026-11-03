@@ -1,0 +1,98 @@
+<!doctype html>
+<!--
+  S3, démo 7 : un formulaire contrôlé. Généré par generer.py depuis jsx/formulaire.jsx : pour changer le code, modifier le .jsx.
+  Le code est celui d'un src/App.jsx de projet Vite. Pour s'ouvrir par double-clic, sans outil
+  ni connexion, la page charge React et Babel (qui traduit le JSX) depuis ../s2-avec-react/lib/.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>S3, démo 7 : un formulaire contrôlé</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+      /* src/App.css : les styles des démos de la séance 3 (les cartes, les messages). */
+      main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+      .carte {
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        padding: 0.2rem 0.8rem;
+      }
+      .carte h3 {
+        margin: 0.3rem 0;
+        font-size: 1.05rem;
+      }
+      .carte p {
+        margin: 0.3rem 0;
+      }
+      .erreur {
+        color: #b31a1a;
+        font-weight: bold;
+      }
+      button {
+        font-size: 1rem;
+        padding: 0.3rem 0.8rem;
+      }
+      /* Les formulaires (notions 7 à 11) : un champ par ligne */
+      label {
+        display: block;
+        margin: 0.4rem 0;
+      }
+      input,
+      select {
+        font-size: 1rem;
+        padding: 0.15rem 0.3rem;
+      }
+      form .erreur {
+        margin: 0 0 0.4rem;
+        font-size: 0.9rem;
+      }
+    </style>
+    <script src="../s2-avec-react/lib/react.development.js"></script>
+    <script src="../s2-avec-react/lib/react-dom.development.js"></script>
+    <script src="../s2-avec-react/lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useState } = React;
+      // src/App.jsx : un formulaire contrôlé (notion 7)
+
+      function App() {
+        // Un état par champ
+        const [prenom, setPrenom] = useState('');
+        const [telephone, setTelephone] = useState('');
+        const [accord, setAccord] = useState(false);
+
+        return (
+          <form>
+            <label>
+              Prénom{' '}
+              <input value={prenom}
+                onChange={(e) => setPrenom(e.target.value)} />
+            </label>
+            <label>
+              Téléphone{' '}
+              <input type="tel" value={telephone}
+                onChange={(e) => setTelephone(e.target.value)} />
+            </label>
+            <label>
+              <input type="checkbox" checked={accord}
+                onChange={(e) => setAccord(e.target.checked)} />
+              {' '}J'accepte l'enregistrement de mes données
+            </label>
+
+            {/* Ce que React sait, à chaque frappe */}
+            <p>Bonjour {prenom} ! Nous vous appellerons au {telephone}.</p>
+            <p>Accord : {accord ? 'oui' : 'non'}</p>
+          </form>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>

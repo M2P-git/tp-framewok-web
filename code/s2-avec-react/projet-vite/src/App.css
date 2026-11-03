@@ -1,0 +1,15 @@
+/* src/App.css : les styles des démos de la séance 2 (la carte, les boutons). */
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  max-width: 360px;
+}
+.choisie {
+  border-color: green;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}

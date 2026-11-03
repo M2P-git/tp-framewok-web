@@ -1,0 +1,63 @@
+<!doctype html>
+<!--
+  Avec React 1 : une carte. Généré par generer.py depuis jsx/carte.jsx : pour changer le code, modifier le .jsx.
+  Le code est celui d'un src/App.jsx de projet Vite. Pour s'ouvrir par double-clic, sans outil
+  ni connexion, la page charge React et Babel (qui traduit le JSX) depuis lib/, à côté.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Avec React 1 : une carte</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+      /* src/App.css : les styles des démos de la séance 2 (la carte, les boutons). */
+      .carte {
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        margin: 0.5rem 0;
+        max-width: 360px;
+      }
+      .choisie {
+        border-color: green;
+      }
+      button {
+        font-size: 1rem;
+        padding: 0.3rem 0.8rem;
+      }
+    </style>
+    <script src="lib/react.development.js"></script>
+    <script src="lib/react-dom.development.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useState } = React;
+      // src/App.jsx : la carte de la notion 4
+
+      function CarteCoupe() {
+        const [choisie, setChoisie] = useState(false);
+        const classe = choisie ? 'carte choisie' : 'carte';
+        return (
+          <>
+            <article className={classe}>
+              <h3>Coupe femme</h3>
+              <p>45 min · 135 DH</p>
+              <button onClick={() => setChoisie(!choisie)}>
+                {choisie ? '✓ Ajoutée' : '+ Ajouter'}
+              </button>
+            </article>
+            <p>Total : {choisie ? 135 : 0} DH</p>
+          </>
+        );
+      }
+
+      function App() {
+        return <CarteCoupe />;
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>

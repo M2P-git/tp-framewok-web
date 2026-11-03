@@ -1,0 +1,46 @@
+<!doctype html>
+<!--
+  Sans React 3 : les données d'abord, l'écran ensuite.
+  La même carte que 1-une-carte.html, mais le choix est noté dans une variable,
+  et une fonction afficher() recalcule la page à partir d'elle (diapo « 3 · Les données
+  d'abord, l'écran ensuite », séance 2). Le total n'est plus jamais relu dans la page.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sans React 3 : les données d'abord</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 2rem auto; }
+      .carte { border: 2px solid #ccc; border-radius: 8px; padding: 0.5rem 1rem; }
+      .choisie { border-color: green; }
+    </style>
+  </head>
+  <body>
+    <article id="coupe" class="carte">
+      <h3>Coupe femme</h3>
+      <p>45 min · 135 DH</p>
+      <button>+ Ajouter</button>
+    </article>
+    <p>Total :
+      <span id="total">0</span> DH</p>
+
+    <script>
+      const carte = document.querySelector('#coupe');
+      const bouton = carte.querySelector('button');
+      const total = document.querySelector('#total');
+
+      let choisie = false;          // la donnée
+
+      function afficher() {         // l'écran, calculé
+        carte.className = choisie ? 'carte choisie' : 'carte';
+        bouton.textContent = choisie ? '✓ Ajoutée' : '+ Ajouter';
+        total.textContent = choisie ? 135 : 0;
+      }
+
+      bouton.addEventListener('click', () => {
+        choisie = !choisie;         // 1. changer la donnée
+        afficher();                 // 2. redessiner
+      });
+    </script>
+  </body>
+</html>

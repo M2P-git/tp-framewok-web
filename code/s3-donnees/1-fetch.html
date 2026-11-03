@@ -1,0 +1,43 @@
+<!doctype html>
+<!--
+  Séance 3, démo 1 : demander les prestations au serveur, avec fetch et await (notion 2).
+  D'abord, dans un terminal, à la racine du dépôt des TP : node api-simulee/serveur.mjs (port 3001).
+  Puis ouvrir ce fichier par double-clic et cliquer sur « Charger les prestations ».
+-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>S3, démo 1 : fetch et await</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; }
+      button { font-size: 1rem; padding: 0.3rem 0.8rem; }
+      li { margin: 0.2rem 0; }
+    </style>
+  </head>
+  <body>
+    <button id="charger">Charger les prestations</button>
+    <ul id="liste"></ul>
+
+    <script>
+      const ADRESSE = 'http://localhost:3001/api'
+        + '/businesses/salon-yasmine-rabat/services';
+      const liste = document.querySelector('#liste');
+
+      async function charger() {
+        // 1. Demander au serveur, et attendre sa réponse
+        const reponse = await fetch(ADRESSE);
+        // 2. Lire le JSON de la réponse : une liste d'objets
+        const prestations = await reponse.json();
+        // 3. Afficher un <li> par prestation
+        liste.textContent = '';
+        for (const prestation of prestations) {
+          const li = document.createElement('li');
+          li.textContent = prestation.name;
+          liste.append(li);
+        }
+      }
+
+      document.querySelector('#charger').addEventListener('click', charger);
+    </script>
+  </body>
+</html>

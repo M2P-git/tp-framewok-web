@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rendu attendu · Séance 3 : Données et formulaires</title>
+<style>
+  :root { --encre: #1d1d2b; --discret: #5b5b6b; --bleu: #3333b3; --fond: #f6f6fa; --cadre: #d7d7e3; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--encre); font: 16px/1.5 system-ui, sans-serif; }
+  header { background: var(--bleu); color: #fff; padding: 1.5rem 1rem; }
+  header h1 { margin: 0 auto; max-width: 1040px; font-size: 1.6rem; }
+  header p { margin: 0.4rem auto 0; max-width: 1040px; opacity: 0.9; }
+  main { max-width: 1040px; margin: 0 auto; padding: 1rem; }
+  .note { background: #fff7e6; border-left: 4px solid #cc6600; padding: 0.6rem 0.9rem; }
+  section { background: #fff; border: 1px solid var(--cadre); border-radius: 8px; padding: 0.8rem 1rem 1rem; margin: 1rem 0; }
+  h2 { margin: 0 0 0.3rem; font-size: 1.15rem; color: var(--bleu); }
+  section > p { margin: 0 0 0.6rem; }
+  .papier { color: var(--discret); font-style: italic; }
+  .etats { display: flex; flex-wrap: wrap; gap: 1rem; }
+  figure { margin: 0; flex: 0 1 470px; min-width: 0; }
+  figcaption { font-size: 0.9rem; color: var(--discret); margin-bottom: 0.3rem; }
+  iframe { width: 100%; border: 2px solid var(--cadre); border-radius: 6px; background: #fff; pointer-events: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Rendu attendu · Séance 3 : Données et formulaires</h1>
+  <p>Ce que doit afficher votre page à la fin de chaque exercice. Ce sont des images figées : elles montrent le résultat, pas le code.</p>
+</header>
+<main>
+<p class="note">Pour voir ces écrans, l'API doit tourner : node api-simulee/serveur.mjs, à la racine du dépôt des TP.</p>
+<section><h2>Exercice 1 · Lancer l'API et lire ses réponses</h2><p class="papier">Pas d'écran à produire : on lit le JSON dans le navigateur, et l'on répond sur papier.</p></section>
+<section><h2>Exercice 2 · Les prix, et un autre salon</h2><p>Les 8 prestations du barbier, avec leur prix ; le bouton dit combien il y en a.</p><div class="etats"><figure><figcaption>Après un clic sur le bouton</figcaption><iframe title="Après un clic sur le bouton" style="height:290px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; }
+      button { font-size: 1rem; padding: 0.3rem 0.8rem; }
+      li { margin: 0.2rem 0; }
+    &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;button id=&quot;charger&quot;&gt;8 prestations chargées&lt;/button&gt;
+    &lt;ul id=&quot;liste&quot;&gt;&lt;li&gt;Coupe classique : 60 DH&lt;/li&gt;&lt;li&gt;Dégradé : 80 DH&lt;/li&gt;&lt;li&gt;Coupe et barbe : 100 DH&lt;/li&gt;&lt;li&gt;Coupe enfant : 45 DH&lt;/li&gt;&lt;li&gt;Taille de barbe : 35 DH&lt;/li&gt;&lt;li&gt;Rasage à la serviette chaude : 60 DH&lt;/li&gt;&lt;li&gt;Soin du visage homme : 110 DH&lt;/li&gt;&lt;li&gt;Coloration de la barbe : 90 DH&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 3 · Un message clair pour un salon inconnu</h2><p>Pour un salon qui n’existe pas, un message clair à la place de « Erreur 404 ».</p><div class="etats"><figure><figcaption>Avec salon-inconnu, après un clic</figcaption><iframe title="Avec salon-inconnu, après un clic" style="height:137px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; }
+      button { font-size: 1rem; padding: 0.3rem 0.8rem; }
+      li { margin: 0.2rem 0; }
+      #message { color: #b31a1a; font-weight: bold; }
+    &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;button id=&quot;charger&quot;&gt;Charger les prestations&lt;/button&gt;
+    &lt;p id=&quot;message&quot;&gt;Ce salon n'existe pas.&lt;/p&gt;
+    &lt;ul id=&quot;liste&quot;&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 4 · Les prestations depuis le serveur</h2><p>Les 8 cartes du Salon Yasmine, venues du serveur (avec le bonus, la durée sur chaque carte).</p><div class="etats"><figure><figcaption>Le résultat, avec le bonus</figcaption><iframe title="Le résultat, avec le bonus" style="height:370px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 3 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+/* Les formulaires (notions 7 à 11) : un champ par ligne */
+label {
+  display: block;
+  margin: 0.4rem 0;
+}
+input,
+select {
+  font-size: 1rem;
+  padding: 0.15rem 0.3rem;
+}
+form .erreur {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;main&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Coupe femme&lt;/h3&gt;&lt;p&gt;45 min · 135 DH&lt;/p&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Coupe homme&lt;/h3&gt;&lt;p&gt;30 min · 70 DH&lt;/p&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Coupe enfant&lt;/h3&gt;&lt;p&gt;30 min · 55 DH&lt;/p&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Brushing&lt;/h3&gt;&lt;p&gt;30 min · 110 DH&lt;/p&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Coloration racines&lt;/h3&gt;&lt;p&gt;60 min · 250 DH&lt;/p&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Mèches ou balayage&lt;/h3&gt;&lt;p&gt;120 min · 600 DH&lt;/p&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Lissage brésilien&lt;/h3&gt;&lt;p&gt;150 min · 900 DH&lt;/p&gt;&lt;/article&gt;&lt;article class=&quot;carte&quot;&gt;&lt;h3&gt;Soin hydratant à l'huile d'argan&lt;/h3&gt;&lt;p&gt;30 min · 180 DH&lt;/p&gt;&lt;/article&gt;&lt;/main&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 5 · Le message d'erreur</h2><p>Quand le serveur ne répond pas (ici, le port 3009), un message à la place de la page vide.</p><div class="etats"><figure><figcaption>Avec le port 3009</figcaption><iframe title="Avec le port 3009" style="height:73px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 3 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+/* Les formulaires (notions 7 à 11) : un champ par ligne */
+label {
+  display: block;
+  margin: 0.4rem 0;
+}
+input,
+select {
+  font-size: 1rem;
+  padding: 0.15rem 0.3rem;
+}
+form .erreur {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;p class=&quot;erreur&quot;&gt;Le serveur ne répond pas.&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 6 · Chercher un mot</h2><p>Un champ de recherche sous le menu : à Rabat, « coupe » ne laisse que 3 établissements.</p><div class="etats"><figure><figcaption>Rabat, et « coupe » tapé dans le champ</figcaption><iframe title="Rabat, et « coupe » tapé dans le champ" style="height:227px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 3 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+/* Les formulaires (notions 7 à 11) : un champ par ligne */
+label {
+  display: block;
+  margin: 0.4rem 0;
+}
+input,
+select {
+  font-size: 1rem;
+  padding: 0.15rem 0.3rem;
+}
+form .erreur {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;label&gt;Ville &lt;select&gt;&lt;option selected=&quot;&quot;&gt;Rabat&lt;/option&gt;&lt;option&gt;Casablanca&lt;/option&gt;&lt;option&gt;Marrakech&lt;/option&gt;&lt;option&gt;Fès&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;&lt;input value=&quot;coupe&quot;&gt;&lt;p&gt;3 établissements&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Barber Bab El Had&lt;/li&gt;&lt;li&gt;Barbershop Oudaya&lt;/li&gt;&lt;li&gt;Salon Yasmine&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 7 · Le champ « Nom »</h2><p>Un champ « Nom » sous le prénom ; le message suit les deux champs, à chaque frappe.</p><div class="etats"><figure><figcaption>Après la saisie</figcaption><iframe title="Après la saisie" style="height:268px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 3 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+/* Les formulaires (notions 7 à 11) : un champ par ligne */
+label {
+  display: block;
+  margin: 0.4rem 0;
+}
+input,
+select {
+  font-size: 1rem;
+  padding: 0.15rem 0.3rem;
+}
+form .erreur {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;form&gt;&lt;label&gt;Prénom &lt;input value=&quot;Fatima&quot;&gt;&lt;/label&gt;&lt;label&gt;Nom &lt;input value=&quot;Alaoui&quot;&gt;&lt;/label&gt;&lt;label&gt;Téléphone &lt;input type=&quot;tel&quot; value=&quot;06 12 34 56 78&quot;&gt;&lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; checked=&quot;&quot;&gt; J'accepte l'enregistrement de mes données&lt;/label&gt;&lt;p&gt;Bonjour Fatima Alaoui ! Nous vous appellerons au 06 12 34 56 78.&lt;/p&gt;&lt;p&gt;Accord : oui&lt;/p&gt;&lt;/form&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 8 · La case d'accord obligatoire</h2><p>Tout est rempli sauf la case : au clic sur « Réserver », un message sous la case.</p><div class="etats"><figure><figcaption>La case oubliée, après « Réserver »</figcaption><iframe title="La case oubliée, après « Réserver »" style="height:220px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 3 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+/* Les formulaires (notions 7 à 11) : un champ par ligne */
+label {
+  display: block;
+  margin: 0.4rem 0;
+}
+input,
+select {
+  font-size: 1rem;
+  padding: 0.15rem 0.3rem;
+}
+form .erreur {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;form&gt;&lt;label&gt;Prénom &lt;input value=&quot;Fatima&quot;&gt;&lt;/label&gt;&lt;label&gt;Téléphone &lt;input type=&quot;tel&quot; value=&quot;06 12 34 56 78&quot;&gt;&lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt; J'accepte l'enregistrement de mes données&lt;/label&gt;&lt;p class=&quot;erreur&quot;&gt;Votre accord est nécessaire.&lt;/p&gt;&lt;button&gt;Réserver&lt;/button&gt;&lt;p&gt;&lt;/p&gt;&lt;/form&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 9 · Réserver, et lire la réponse</h2><p>Après la réservation, le message donne l’heure et le numéro du rendez-vous (le numéro change à chaque fois).</p><div class="etats"><figure><figcaption>Après « Réserver » : la réponse 201</figcaption><iframe title="Après « Réserver » : la réponse 201" style="height:316px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 3 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+/* Les formulaires (notions 7 à 11) : un champ par ligne */
+label {
+  display: block;
+  margin: 0.4rem 0;
+}
+input,
+select {
+  font-size: 1rem;
+  padding: 0.15rem 0.3rem;
+}
+form .erreur {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;form&gt;&lt;label&gt;Jour &lt;input type=&quot;date&quot; value=&quot;2026-11-04&quot;&gt;&lt;/label&gt;&lt;label&gt;Heure &lt;select&gt;&lt;option value=&quot;&quot;&gt;18 créneaux libres&lt;/option&gt;&lt;option selected=&quot;&quot;&gt;14:30&lt;/option&gt;&lt;option&gt;14:45&lt;/option&gt;&lt;option&gt;15:00&lt;/option&gt;&lt;option&gt;15:15&lt;/option&gt;&lt;option&gt;15:30&lt;/option&gt;&lt;option&gt;15:45&lt;/option&gt;&lt;option&gt;16:00&lt;/option&gt;&lt;option&gt;16:15&lt;/option&gt;&lt;option&gt;16:30&lt;/option&gt;&lt;option&gt;16:45&lt;/option&gt;&lt;option&gt;17:00&lt;/option&gt;&lt;option&gt;17:15&lt;/option&gt;&lt;option&gt;17:30&lt;/option&gt;&lt;option&gt;17:45&lt;/option&gt;&lt;option&gt;18:00&lt;/option&gt;&lt;option&gt;18:15&lt;/option&gt;&lt;option&gt;18:30&lt;/option&gt;&lt;option&gt;18:45&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;&lt;label&gt;Prénom &lt;input value=&quot;Fatima&quot;&gt;&lt;/label&gt;&lt;label&gt;Nom &lt;input value=&quot;Alaoui&quot;&gt;&lt;/label&gt;&lt;label&gt;Téléphone &lt;input type=&quot;tel&quot; value=&quot;06 12 34 56 78&quot;&gt;&lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; checked=&quot;&quot;&gt; J'accepte l'enregistrement de mes données&lt;/label&gt;&lt;button&gt;Réserver&lt;/button&gt;&lt;p&gt;&lt;strong&gt;Réservé à 14:30 : bk-07975&lt;/strong&gt;&lt;/p&gt;&lt;/form&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 10 · Un message plus aimable</h2><p>Le même créneau réservé deux fois : le second envoi reçoit un 409 ; la saisie reste, l’heure est effacée.</p><div class="etats"><figure><figcaption>Après un second clic sur « Réserver » : la réponse 409</figcaption><iframe title="Après un second clic sur « Réserver » : la réponse 409" style="height:337px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 3 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+/* Les formulaires (notions 7 à 11) : un champ par ligne */
+label {
+  display: block;
+  margin: 0.4rem 0;
+}
+input,
+select {
+  font-size: 1rem;
+  padding: 0.15rem 0.3rem;
+}
+form .erreur {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;form&gt;&lt;label&gt;Jour &lt;input type=&quot;date&quot; value=&quot;2026-11-04&quot;&gt;&lt;/label&gt;&lt;label&gt;Heure &lt;select&gt;&lt;option value=&quot;&quot; selected=&quot;&quot;&gt;14 créneaux libres&lt;/option&gt;&lt;option&gt;15:30&lt;/option&gt;&lt;option&gt;15:45&lt;/option&gt;&lt;option&gt;16:00&lt;/option&gt;&lt;option&gt;16:15&lt;/option&gt;&lt;option&gt;16:30&lt;/option&gt;&lt;option&gt;16:45&lt;/option&gt;&lt;option&gt;17:00&lt;/option&gt;&lt;option&gt;17:15&lt;/option&gt;&lt;option&gt;17:30&lt;/option&gt;&lt;option&gt;17:45&lt;/option&gt;&lt;option&gt;18:00&lt;/option&gt;&lt;option&gt;18:15&lt;/option&gt;&lt;option&gt;18:30&lt;/option&gt;&lt;option&gt;18:45&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;&lt;label&gt;Prénom &lt;input value=&quot;Fatima&quot;&gt;&lt;/label&gt;&lt;label&gt;Nom &lt;input value=&quot;Alaoui&quot;&gt;&lt;/label&gt;&lt;label&gt;Téléphone &lt;input type=&quot;tel&quot; value=&quot;06 12 34 56 78&quot;&gt;&lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; checked=&quot;&quot;&gt; J'accepte l'enregistrement de mes données&lt;/label&gt;&lt;button&gt;Réserver&lt;/button&gt;&lt;p&gt;&lt;strong&gt;Désolé, cette heure vient d'être prise : choisissez-en une autre.&lt;/strong&gt;&lt;/p&gt;&lt;/form&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 11 · Faire refuser une réservation</h2><p>Un prénom d’une lettre, un téléphone trop court, la case décochée : le serveur répond 422, avec ses messages.</p><div class="etats"><figure><figcaption>Après « Réserver » : la réponse 422</figcaption><iframe title="Après « Réserver » : la réponse 422" style="height:358px" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+/* src/App.css : les styles des démos de la séance 3 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+/* Les formulaires (notions 7 à 11) : un champ par ligne */
+label {
+  display: block;
+  margin: 0.4rem 0;
+}
+input,
+select {
+  font-size: 1rem;
+  padding: 0.15rem 0.3rem;
+}
+form .erreur {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;root&quot;&gt;&lt;form&gt;&lt;label&gt;Jour &lt;input type=&quot;date&quot; value=&quot;2026-11-04&quot;&gt;&lt;/label&gt;&lt;label&gt;Heure &lt;select&gt;&lt;option value=&quot;&quot;&gt;14 créneaux libres&lt;/option&gt;&lt;option selected=&quot;&quot;&gt;15:30&lt;/option&gt;&lt;option&gt;15:45&lt;/option&gt;&lt;option&gt;16:00&lt;/option&gt;&lt;option&gt;16:15&lt;/option&gt;&lt;option&gt;16:30&lt;/option&gt;&lt;option&gt;16:45&lt;/option&gt;&lt;option&gt;17:00&lt;/option&gt;&lt;option&gt;17:15&lt;/option&gt;&lt;option&gt;17:30&lt;/option&gt;&lt;option&gt;17:45&lt;/option&gt;&lt;option&gt;18:00&lt;/option&gt;&lt;option&gt;18:15&lt;/option&gt;&lt;option&gt;18:30&lt;/option&gt;&lt;option&gt;18:45&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;&lt;label&gt;Prénom &lt;input value=&quot;F&quot;&gt;&lt;/label&gt;&lt;label&gt;Nom &lt;input value=&quot;Alaoui&quot;&gt;&lt;/label&gt;&lt;label&gt;Téléphone &lt;input type=&quot;tel&quot; value=&quot;0611&quot;&gt;&lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt; J'accepte l'enregistrement de mes données&lt;/label&gt;&lt;button&gt;Réserver&lt;/button&gt;&lt;p&gt;&lt;strong&gt;Entre 2 et 50 caractères Numéro marocain attendu, par exemple 06 12 34 56 78 Votre accord est nécessaire pour enregistrer le rendez-vous&lt;/strong&gt;&lt;/p&gt;&lt;/form&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></figure></div></section>
+<section><h2>Exercice 12 · Relier les deux versions</h2><p class="papier">Pas d'écran à produire : l'exercice se fait sur papier.</p></section>
+</main>
+</body>
+</html>

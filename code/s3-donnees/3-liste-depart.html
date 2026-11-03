@@ -1,0 +1,100 @@
+<!doctype html>
+<!--
+  S3, démo 3 : le départ de l'exercice 4. Généré par generer.py depuis jsx/liste-depart.jsx : pour changer le code, modifier le .jsx.
+  Le code est celui d'un src/App.jsx de projet Vite. Pour s'ouvrir par double-clic, sans outil
+  ni connexion, la page charge React et Babel (qui traduit le JSX) depuis ../s2-avec-react/lib/.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>S3, démo 3 : le départ de l'exercice 4</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 1.5rem auto; padding: 0 1rem; }
+      /* src/App.css : les styles des démos de la séance 3 (les cartes, les messages). */
+      main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+      .carte {
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        padding: 0.2rem 0.8rem;
+      }
+      .carte h3 {
+        margin: 0.3rem 0;
+        font-size: 1.05rem;
+      }
+      .carte p {
+        margin: 0.3rem 0;
+      }
+      .erreur {
+        color: #b31a1a;
+        font-weight: bold;
+      }
+      button {
+        font-size: 1rem;
+        padding: 0.3rem 0.8rem;
+      }
+      /* Les formulaires (notions 7 à 11) : un champ par ligne */
+      label {
+        display: block;
+        margin: 0.4rem 0;
+      }
+      input,
+      select {
+        font-size: 1rem;
+        padding: 0.15rem 0.3rem;
+      }
+      form .erreur {
+        margin: 0 0 0.4rem;
+        font-size: 0.9rem;
+      }
+    </style>
+    <script src="../s2-avec-react/lib/react.development.js"></script>
+    <script src="../s2-avec-react/lib/react-dom.development.js"></script>
+    <script src="../s2-avec-react/lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+      // src/App.jsx : le point de départ de l'exercice 4
+      // Les prestations sont écrites dans le code, comme en S2 : faites-les venir du serveur.
+
+      const API = 'http://localhost:3001/api';
+      const ADRESSE = API + '/businesses/salon-yasmine-rabat/services';
+
+      const PRESTATIONS = [
+        { id: 'sv-001', name: 'Coupe femme', priceMad: 135 },
+        { id: 'sv-002', name: 'Coupe homme', priceMad: 70 },
+        { id: 'sv-004', name: 'Brushing', priceMad: 110 },
+      ];
+
+      function CarteService({ nom, prix }) {
+        return (
+          <article className="carte">
+            <h3>{nom}</h3>
+            <p>{prix} DH</p>
+          </article>
+        );
+      }
+
+      function App() {
+        return (
+          <main>
+            {PRESTATIONS.map((prestation) => (
+              <CarteService
+                key={prestation.id}
+                nom={prestation.name}
+                prix={prestation.priceMad}
+              />
+            ))}
+          </main>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>

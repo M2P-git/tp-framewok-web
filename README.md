@@ -51,6 +51,7 @@ après la séance.
 
 | Dossier | Contenu |
 | --- | --- |
+| [`code`](code/LISEZMOI.md) | le code des séances : les démos, les fichiers de départ des exercices faits en classe, et le **rendu attendu** de chaque exercice (`code/rendu-attendu/`) |
 | [`api-simulee`](api-simulee/serveur.mjs) | l'API de Mawid, pour les TP de S3 et S4 et le projet : `node api-simulee/serveur.mjs`, puis `http://localhost:3001` (aucune dépendance) |
 | [`donnees`](donnees/LISEZMOI.md) | les données fictives : 32 établissements (30 actifs), 216 prestations, 500 clients, près de 8 000 rendez-vous, des avis et des produits |
 | [`modeles`](modeles/README.md) | la boîte à outils du freelance : questions au client, fiche de cadrage, user stories, proposition et jalons, PV de recette, journal IA, README de portfolio, règles pour les assistants IA |

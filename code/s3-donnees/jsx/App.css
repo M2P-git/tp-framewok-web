@@ -1,0 +1,40 @@
+/* src/App.css : les styles des démos de la séance 3 (les cartes, les messages). */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.carte {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+}
+.carte h3 {
+  margin: 0.3rem 0;
+  font-size: 1.05rem;
+}
+.carte p {
+  margin: 0.3rem 0;
+}
+.erreur {
+  color: #b31a1a;
+  font-weight: bold;
+}
+button {
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+/* Les formulaires (notions 7 à 11) : un champ par ligne */
+label {
+  display: block;
+  margin: 0.4rem 0;
+}
+input,
+select {
+  font-size: 1rem;
+  padding: 0.15rem 0.3rem;
+}
+form .erreur {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
