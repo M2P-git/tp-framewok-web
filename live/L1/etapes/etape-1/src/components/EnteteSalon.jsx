@@ -1,7 +1,7 @@
-// L'en-tête d'un salon : un composant qui reçoit le salon par ses props.
-// Tout vient des données : le même composant sert pour n'importe quel salon.
+// En-tête d'un salon : le salon est reçu par les props.
+// Les valeurs affichées proviennent toutes des props.
 export default function EnteteSalon({ salon }) {
-  // Déstructurer : sortir d'un coup les valeurs dont on a besoin
+  // Déstructuration des propriétés utilisées
   const { name, district, city, tagline, rating, theme } = salon;
 
   return (

@@ -1,12 +1,11 @@
-/* Les styles de Mawid.
+/* Feuille de style de Mawid (fichier fourni).
  *
- * LA RÈGLE : aucune couleur, aucune police, aucun arrondi n'est écrit « en dur » dans un
- * composant. Tout passe par les variables ci-dessous (les « jetons de design », en anglais
- * design tokens). Pour habiller l'application aux couleurs d'un autre salon, on change
- * QUELQUES variables, et rien d'autre.
+ * Aucune couleur, police ou valeur d'arrondi n'est écrite dans les composants : elles sont
+ * définies par les variables ci-dessous (jetons de design, ou design tokens). Un changement de
+ * salon ne modifie que quelques variables.
  *
- * Les variables --marque-* viennent du thème du salon (salon.theme) : la
- * fonction themeVersStyle (src/lib/theme.js) les pose sur l'élément racine de App :
+ * Les variables --marque-* proviennent du thème du salon (salon.theme). La fonction
+ * themeVersStyle (src/lib/theme.js) les applique à l'élément racine de App :
  *   <div className="app" style={themeVersStyle(salon.theme)}>
  */
 
@@ -27,7 +26,7 @@
   --attention: #b45309;
   --erreur: #b91c1c;
 
-  /* Les espacements : une seule échelle, pour un rendu régulier */
+  /* Espacements : une échelle unique */
   --espace-1: 0.25rem;
   --espace-2: 0.5rem;
   --espace-3: 1rem;
@@ -39,7 +38,7 @@
   background: var(--fond);
 }
 
-/* Thème sombre : il suffit de changer les neutres */
+/* Thème sombre : seules les couleurs neutres changent */
 :root[data-theme='sombre'] {
   --fond: #12141a;
   --surface: #1d2029;

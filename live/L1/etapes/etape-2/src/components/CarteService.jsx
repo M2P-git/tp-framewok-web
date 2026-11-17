@@ -1,4 +1,4 @@
-// La carte d'une prestation : elle affiche ce qu'on lui donne.
+// Carte d'une prestation : affiche les données reçues par les props.
 import { formaterDuree, formaterPrix } from '../lib/format.js';
 
 export default function CarteService({ service }) {

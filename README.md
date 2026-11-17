@@ -32,7 +32,7 @@ votre portfolio une application **en ligne, testée, documentée**, et une exten
 | S2 | La page d'un salon en composants, et un gabarit qui change de marque | [`s2-composants`](s2-composants/README.md) | Node.js |
 | S3 | Brancher Mawid sur l'API : l'annuaire, les créneaux, la réservation | [`s3-donnees-formulaires`](s3-donnees-formulaires/README.md) | Node.js, l'API simulée |
 | S4 | Les routes, l'espace pro, les tests, et la livraison du jalon M1 | [`s4-routage-etat`](s4-routage-etat/README.md) | Node.js, l'API simulée |
-| L1 (cours live, 16 nov.) | La page du salon : React revu pas à pas, dans votre projet | [`live/L1`](live/L1/README.md) | Node.js, votre projet `mawid-web` |
+| L1 (16 nov.) | Page d'un salon : composants, props, listes, état, données dérivées | [`live/L1`](live/L1/README.md) | Node.js, le projet `mawid-web` |
 | S1 à S12 | Le projet d'équipe : une mission de freelance | [`projet-equipe`](projet-equipe/README.md) | |
 
 Les TP de S2 à S4 construisent pas à pas **votre** application React `mawid-web`, dans votre

@@ -1,4 +1,4 @@
-// Afficher un prix et une durée (fonctions fournies : on les utilise, on ne les réécrit pas).
+// Mise en forme des prix et des durées (fichier fourni).
 
 // formaterPrix(135) donne « 135 DH » ; formaterPrix(0) donne « Offert »
 export function formaterPrix(prix) {

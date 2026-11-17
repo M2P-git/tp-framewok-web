@@ -1,11 +1,11 @@
-// La liste des prestations : une carte par prestation, grâce à map.
+// Liste des prestations : une carte par élément du tableau.
 import CarteService from './CarteService.jsx';
 
 export default function ListeServices({ services }) {
   return (
     <section className="grille">
       {services.map((service) => (
-        // key : une étiquette unique et stable, venue des données (l'id), pour que React s'y retrouve
+        // key : identifiant unique et stable, issu des données
         <CarteService key={service.id} service={service} />
       ))}
     </section>

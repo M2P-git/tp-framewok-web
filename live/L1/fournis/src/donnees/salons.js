@@ -1,6 +1,6 @@
-// Les données de quatre établissements Mawid, telles que l'API les renverra (séance L2).
-// Un tableau d'objets : un objet par salon, et dans chaque salon, un tableau de prestations.
-// On ne modifie pas ce fichier : on LIT ces données dans les composants.
+// Données de quatre établissements Mawid, au format renvoyé par l'API (séance L2).
+// Tableau d'objets : un objet par salon, contenant un tableau de prestations.
+// Fichier fourni : les composants lisent ces données sans les modifier.
 
 export const SALONS = [
   {

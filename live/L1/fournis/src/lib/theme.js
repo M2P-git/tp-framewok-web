@@ -1,7 +1,7 @@
-// La « marque blanche » : les couleurs, la police et les arrondis d'un salon deviennent des
-// variables CSS (--marque-primaire...), que styles.css utilise partout.
-// Changer de salon change donc toute l'apparence, sans toucher au CSS ni aux composants.
-// (Fonction fournie : on l'utilise dans App.jsx, on ne la réécrit pas.)
+// Thème d'un salon : couleurs, police et arrondis convertis en variables CSS
+// (--marque-primaire, --marque-douce...), utilisées par styles.css.
+// Un changement de salon modifie l'apparence sans modifier le CSS ni les composants.
+// Fichier fourni.
 export function themeVersStyle(theme) {
   return {
     '--marque-primaire': theme.primary,
